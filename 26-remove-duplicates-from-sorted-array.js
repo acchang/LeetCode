@@ -4,6 +4,8 @@ var removeDuplicates = function(nums) {
     return nums
 };    
 
+// why the spaces?
+// why is output empty?
 
 
 
