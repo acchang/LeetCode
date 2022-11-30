@@ -1,14 +1,16 @@
-
-
 var removeDuplicates = function(nums) {
-    if(nums.length <= 1) {
-        return nums.length;
-    }
-    var k = 1;
-    for(var i = 1; i < nums.length; i++) {
-        if(nums[i] != nums[i-1]){
-            nums[k++] = nums[i];
+    for (i = 0; i < nums.length; i++) {
+        if (nums[i] == nums[i+1]) {
+            nums.splice(i, 1);
+            i--;
+            // steps it back to the first
+            console.log(nums)
         }
     }
-    return k;
 };
+
+
+/* 
+
+https://leetcode.com/problems/remove-duplicates-from-sorted-array/submissions/
+
