@@ -25,4 +25,4 @@ cannot return in the middle of forEach, better to set a variable.
 Object.values can turn object into array of values.
 
 Use brackets to assign object keys when working with variables:
-objectOfUniques[uniques[i]]
+objectOfUniques[uniques[i]].
