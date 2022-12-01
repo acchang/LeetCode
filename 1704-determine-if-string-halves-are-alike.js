@@ -8,3 +8,23 @@ var halvesAreAlike = function(s) {
 
 /* https://leetcode.com/problems/determine-if-string-halves-are-alike/
 
+this is smart to use includes:
+
+
+const vowels = "aeiouAEIOU"
+
+var halvesAreAlike = function(S) {
+    let mid = S.length / 2, ans = 0
+    // set a mid point
+    for (let i = 0, j = mid; i < mid; i++, j++)
+    // loop from zero to midpoint (i), just moves correspondingly
+        ans += vowels.includes(S.charAt(i)) - vowels.includes(S.charAt(j))
+    // go through vowels, if the first of one half is true, becomes 1
+    // go through vowels, if the first of other half is true, becomes 1
+    // then if the same number of vowels then ans is 0
+    return ans === 0
+};
+
+There is no need for a floor bc it will always be even.
+"Split this string into two halves of equal lengths, and let a be the first half and b be the second half."
+
