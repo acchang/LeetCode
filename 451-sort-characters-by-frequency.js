@@ -8,13 +8,18 @@ var frequencySort = function(s) {
         answerObj[s[i]] = newValue }
     }
     
-    let sortArray = []
+    let objIntoArray = []
     for (var letter in answerObj) {
-    sortArray.push([letter, answerObj[letter]])};
+    objIntoArray.push([letter, answerObj[letter]])};
+    let sortedArray = objIntoArray.sort( (a,b) => (b[1] - a[1]))
+    console.log(sortedArray)
 
-    
-    
-    
+    let answer = ""
+    for (let j=0;j<sortedArray.length;j++){
+        answer += sortedArray[j][0].repeat(sortedArray[j][1])
+    }
+    console.log(answer)
+    return answer
     
 };
 
