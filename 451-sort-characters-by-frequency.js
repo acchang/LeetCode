@@ -17,7 +17,8 @@ var frequencySort = function(s) {
     return answer  
 };
 
-//https://leetcode.com/problems/sort-characters-by-frequency/submissions/
+// https://leetcode.com/problems/sort-characters-by-frequency/submissions/
+// https://leetcode.com/submissions/detail/853874436/
 
 
 
@@ -28,3 +29,16 @@ var frequencySort = function(s) {
     // PseudoCode:
     // create hashmap of letters
     // sort by value in descending order, return keys times repeat
+
+
+    // this one is pretty neat:
+
+    var frequencySort = function(s) {
+    
+        const charMap = s.split('').reduce((acc, cur) => {acc[cur] = (acc[cur] || 0) + 1; return acc} , {})
+        // creates object
+        const sortedArr = Object.keys(charMap).sort((a, b) => charMap[b] - charMap[a]);
+        // sorts object
+        return sortedArr.reduce((acc, cur) => acc + cur.repeat(charMap[cur]) ,'')
+        // output with repeat
+    };
