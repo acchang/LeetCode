@@ -1,3 +1,25 @@
+const minimumAverageDifference = function(nums) {
+	const n = nums.length;
+	
+    let leftSumsArray = []
+    for (let i=1; i<=n; i++){
+        leftend = nums.slice(0,i);
+        leftSumsArray.push(leftend.reduce((a,b) => a+b, 0))
+    }
+    
+    let rightSumsArray = []
+    for (let i=0; i<n; i++){
+        rightend = nums.slice(i,n);
+        rightSumsArray.push(rightend.reduce((a,b) => a+b, 0))
+    }
+
+}
+
+
+
+
+// why does the below time out?
+
 var minimumAverageDifference = function(nums) {
     let lowest = Infinity;
     let lowestIndex = -1
@@ -12,7 +34,7 @@ var minimumAverageDifference = function(nums) {
     return lowestIndex
 };
 
-// Why does the above time out and these do not?
+// Why does the above time out and these do not? Was it done for memory? What lessons can I take, break it up?
 
 const minimumAverageDifference = function(nums) {
 	const n = nums.length;
