@@ -1,3 +1,7 @@
+
+
+// array too long, work with vectors.
+
 var minimumAverageDifference = function(nums) {
     let lowest = Infinity;
     let lowestIndex = ""
