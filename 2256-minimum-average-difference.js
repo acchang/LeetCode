@@ -1,15 +1,44 @@
 // trying mine without the slice.
 
 var minimumAverageDifference = function(nums) {
+	let leftSum = 0;
+    let rightSum = nums.reduce((a,b)=>a+b, 0)
+
+    const n = nums.length;
     let lowest = Infinity;
     let lowestIndex = -1
-    for (let i=nums.length-1; i>-1; i--){
-        let first = nums.slice(0,i+1);
-        let firstAvg = Math.floor(first.reduce((a, b) => a + b, 0) / first.length);
-        let second = nums.slice(i+1);
-        second == 0 ? secondAvg = 0 : secondAvg = Math.floor(second.reduce((a, b) => a + b, 0) / second.length)
-        let result = Math.abs(firstAvg - secondAvg);
-        if (result<=lowest){lowest=result, lowestIndex=i}
+
+    for (let i=0; i<n; i++){
+		leftSum += nums[i];
+		rightSum -= nums[i];
+
+        // 1 2 3 4 (l:0, r:10) then get avgDiff
+        // 1 2 3 4 (l:0+1=1, r:10-1=9) etc 
+        // 1 2 3 4 (l:1+2=3, r:9-2=7) etc
+        // solution is sort of Gaussian, first and last elements always the same
+        // that may be why split is too much?
+
+		const leftAvg = Math.floor(leftSum / (i + 1));
+		const rightAvg = i == n - 1  ? 0 : Math.floor(rightSum / (n - i - 1));
+		const avgDiff = Math.abs(leftAvg - rightAvg);
+
+        if (avgDiff < lowest) {
+			lowest = avgDiff;
+			lowestIndex = i;
+		}
+	}
+
+	return lowestIndex;
+};
+
+
+
+        // let first = nums.slice(0,i+1);
+        // let firstAvg = Math.floor(first.reduce((a, b) => a + b, 0) / first.length);
+        // let second = nums.slice(i+1);
+        // second == 0 ? secondAvg = 0 : secondAvg = Math.floor(second.reduce((a, b) => a + b, 0) / second.length)
+        // let result = Math.abs(firstAvg - secondAvg);
+        // if (result<=lowest){lowest=result, lowestIndex=i}
     }
     return lowestIndex
 };
