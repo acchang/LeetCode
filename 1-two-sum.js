@@ -17,6 +17,7 @@
     for (j=0;matches.length;j++) {
 
         if (matches[j].every(x => {return nums.includes(x)})){
+            console.log(matches[j])
             answer.push(nums.indexOf(matches[j][0]), nums.lastIndexOf(matches[j][1]))
             break
         }
