@@ -70,3 +70,6 @@ var twoSum = function(nums, target) {
     }
 };
 
+// solution, but not js:
+
+// https://medium.com/swlh/understanding-leetcode-the-two-sum-problem-6428ed5cb18d
