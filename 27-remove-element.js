@@ -22,3 +22,26 @@ Memory
 42.2 MB
 Beats
 43.97%
+
+This works too but slower: */
+
+var removeElement = function(nums, val) {
+    const len = nums.length;
+    for(i = 0; i < len; i++) {
+      if (nums[i] === val) {
+        nums.splice(i, 1);
+        i--;
+      }
+    }
+    return nums.length;
+  };
+
+/*
+Runtime
+105 ms
+Beats
+27.62%
+Memory
+42.5 MB
+Beats
+9.19%
