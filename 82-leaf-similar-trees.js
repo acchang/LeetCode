@@ -11,68 +11,31 @@
  * @param {TreeNode} root2
  * @return {boolean}
  */
-
-// https://leetcode.com/problems/range-sum-of-bst/description/
-
-
-
-var leafSimilar = function(root1, root2) {
-      
-    function eval(node){
-    let total = 0;
-    if (this.left == null && this.right == null){total += this.val}
-    else {eval(node)}
-    return total
-    }
-
-    return  eval(root1) = eval(root2)
-};
-
-
-var getLeafNodes = function (root) {
-    let range = [];
-    const traverse = (root) => {
-        if (root.left >= L && root.val <= R) sum += root.val;
-        if (root.left !== null) traverse(root.left);
-        if (root.right !== null) traverse(root.right);
-    }
-    traverse(root);
-    return sum;
-
-}
-
-
-const rangeSumBST = (root, L, R) => {
-    let sum = 0;
-    const traverse = (root) => {
-        if (root.val >= L && root.val <= R) sum += root.val;
-        if (root.left !== null) traverse(root.left);
-        if (root.right !== null) traverse(root.right);
-    }
-    traverse(root);
-    return sum;
-};
-
-
-
-
 var leafSimilar = function(root1, root2) {
     let r1 = getLeafNodes(root1);
     let r2 = getLeafNodes(root2);
     return (r1.length === r2.length && r1.every((item, i) => item === r2[i]));
 };
 
-var getLeafNodes = function(root){
-    var stack = [root];
-    let result = [];
-    while(stack.length){
-        let curr = stack.pop();
-        if(curr.left)
-            stack.push(curr.left);
-        if(curr.right)
-            stack.push(curr.right);
-        if(!curr.left && !curr.right)
-            result.push(curr.val);
+var getLeafNodes = function (root) {
+    let range = [];
+    const traverse = (root) => {
+        if (root.left == null && root.right == null) range.push(root.val);
+        if (root.left !== null) traverse(root.left);
+        if (root.right !== null) traverse(root.right);
     }
-    return result;
+    traverse(root);
+    return range;
 }
+
+// https://leetcode.com/problems/leaf-similar-trees/submissions/858393280/
+
+/*
+Runtime
+102 ms
+Beats
+49.70%
+Memory
+44.6 MB
+Beats
+49.91%
