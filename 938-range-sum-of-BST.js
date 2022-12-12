@@ -12,13 +12,25 @@
  * @param {number} high
  * @return {number}
  */
- var rangeSumBST = function(root, low, high) {
-    for (let i=0; i<root.length; i++){
-        let output = 0
-        if (root[i]>=low && root[i]<=high){
-            console.log(root[i])
-            output += root [i]
-        }
-        return root
+const rangeSumBST = (root, L, R) => {
+    let sum = 0;
+    const traverse = (root) => {
+        if (root.val >= L && root.val <= R) sum += root.val;
+        if (root.left !== null) traverse(root.left);
+        if (root.right !== null) traverse(root.right);
     }
+    traverse(root);
+    return sum;
 };
+
+/* https://leetcode.com/problems/range-sum-of-bst/submissions/858353513/
+
+Runtime
+234 ms
+Beats
+82.45%
+Memory
+73.2 MB
+Beats
+94.62%
+
