@@ -11,7 +11,7 @@
  */
 
 // from: https://leetcode.com/problems/middle-of-the-linked-list/solutions/2878706/topic/
-
+// not my answer.
 
 var middleNode = function(head) {
     let fast = head;
