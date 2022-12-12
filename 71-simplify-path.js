@@ -32,6 +32,7 @@ var simplifyPath = function(path) {
 };
 
 /*
+https://leetcode.com/problems/simplify-path/submissions/858770750/?q=javascript&orderBy=most_relevant
 path =
 "/a/./b/../../c/"
 88 / 257 testcases passed
