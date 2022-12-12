@@ -6,13 +6,14 @@
 // https://leetcode.com/problems/climbing-stairs/submissions/858575018/
 // 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144
 /* Runtime
-60 ms
+Runtime
+58 ms
 Beats
-94.10%
+96.31%
 Memory
-42.6 MB
+42 MB
 Beats
-7.90% */
+31.39% */
 
 
 var climbStairs = function(n) {
@@ -20,7 +21,5 @@ var climbStairs = function(n) {
     for (let i=3; i<n+1; i++){
         fibo.push(fibo[i-2]+fibo[i-3])
     }
-    console.log(fibo)
-    console.log(fibo[n-1])
     return fibo[n-1]
 };
