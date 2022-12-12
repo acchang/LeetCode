@@ -3,56 +3,42 @@
  * @return {string}
  */
 var simplifyPath = function(path) {
+    // Split on slash ... remove all slashes for the middle
+    let s = path.split('/');
 
-    // get rid of '..'
-    for (let i=path.length;i>0;i--){
-        if (path[i] == "." && path[i-1] == "."){path = path.slice([i-2])}
-    }
-    console.log("1: " + path)
-
-    // eliminate final '/'
-    if (path[path.length-1]==="/"){path = path.slice(0, -1)}
-    console.log("2: " + path)
-
-    // get rid of '.'
-    answer = path.split("").filter((x) => x != ".")
-    console.log("3: " + answer)
-
-    // reduce '//' to '/'
-    for (let j=0;j<answer.length;j++){
-        if (answer[j] == "/" && answer[j+1] == "/"){answer.splice([j],1)
-        j--
+    // Filter out empty strings, ie "/home/" is "", "home", ""
+    s = s.filter((el)=>el!=='');
+    
+    const answer = [];
+    
+    
+    for(const el of s){        
+        if(el === '.'){
+        
+            // do nothing
+        }else if(el === '..'){
+            answer.pop(); // In JavaScript no need to check whether the array is empty or not before popping
+            // for path = "/a/./b/../../c/"
+            // pop takes out the last element put in answer
+            // s is  ['a', '.', 'b', '..', '..', 'c']
+            // without popping it would be a/b/c
+        }else        
+        {
+            answer.push(el);
         }
     }
-    answer = answer.join("")
-    console.log("4: " + answer)
-
-    // once again eliminate final '/'
-    if (answer.length != 1 && answer[answer.length-1]==="/"){answer = answer.slice(0, -1)}
-    console.log("5: " + answer)
-
-    return answer
+    
+    return '/' + answer.join('/');
 };
 
 /*
-"/a//b////c/d//././/.."
-
-
+path =
+"/a/./b/../../c/"
+88 / 257 testcases passed
 Output
-"/"
-Expected
 "/a/b/c"
+Expected
+"/c"
 Stdout
-1: /..
-2: /..
-3: /
-4: /
-5: /
+[ 'a', '.', 'b', '..', '..', 'c' ]
 
-
-
-
-
-/*
-"/a/../../b/../c//.//"
-"/c/"
