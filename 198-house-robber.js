@@ -30,6 +30,13 @@ ans: [0, 2, 2, 3, 4]
 dp: [0, 2, ?] 
 dp[2] = dp[1] (2) or 0 + 1
 ... this means start with nums[0] or nums[1] ie max of 2 or 1. Obviously choose 2. 
+2 1 1 2
+start with 2 or 1
+choose 2, total is 2, skip 1a
+next 1a or 1b, choose 2+1b for highest, skip 1a, high is 3
+next 1b or 2, 3 or 4, skip 1b, high is 4
+
+
 
 choice is 2
 dp[3] = dp[2] (2) or 2 + ]
