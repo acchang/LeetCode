@@ -23,9 +23,25 @@ var rob = function(nums) {
 for each house, rob current and skip next or skip current and rob next
 https://medium.com/outco/how-to-solve-the-house-robber-problem-f3535ebaef1b
 
-
 nums [2, 1, 1, 2]
 ans: [0, 2, 2, 3, 4]
+
+- you pick between the first two nums as to where to start (0 and 2)
+- you pick the bigger one (2) 
+- ans begins with 0, then 2 ... so ans is [0, 2]
+- then look at nums: do you want the previous ans (0) and the current nums (1)? Or do you stay with the current ans (2)
+- you pick 2, ans is [0, 2, 2,]
+- then look at nums: do you want the previous ans (2) and the current nums (1)? Or do you stay with the current ans (2)
+- you pick 3, ans is [0, 2, 2, 3]
+
+basically you see if current nums plus previous ans is better total 
+if not, then current ans remains and you skip the current and get a new ans.
+then you look at ans again and evaluate nums again.
+
+
+
+
+
 
 dp: [0, 2, ?] 
 dp[2] = dp[1] (2) or 0 + 1
