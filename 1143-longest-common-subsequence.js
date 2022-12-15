@@ -39,7 +39,7 @@ return matrix[a.length][b.length];
 
 0 1 2 3 
     0 a c e
-0   
+0     0 0 0
 a   0 1 1 1
 b   0 1 1 1
 c   0 1 2 2
@@ -51,6 +51,8 @@ the idea is you are methodically going through every letter in one word and seei
 "Is 'b' " and so on. 
 It doesn't matter if b appears first b you were first checking all for `a` and once that was ok then all for `b`.
 The order matters mainly for checking, and it's just going row for row.
+The zeros are needed to allow for the step before and step above
 
-
-
+This is a similar way but bottom up:
+https://www.youtube.com/watch?v=Ua0GhsJSlWM
+good explanation on how it keeps reducing the compared words
