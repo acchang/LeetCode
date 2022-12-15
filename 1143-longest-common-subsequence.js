@@ -7,6 +7,8 @@
 /* 
 Google intvu q: https://www.youtube.com/watch?v=10WnvBk9sZc
 video: https://www.youtube.com/watch?v=Ua0GhsJSlWM
+from: https://stackoverflow.com/questions/59925509/javascript-longest-common-subsequence
+
 */
 
 var longestCommonSubsequence = function(a, b) {
