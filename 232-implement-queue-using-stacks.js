@@ -1,3 +1,7 @@
+/* https://www.educative.io/answers/what-is-the-stack-data-structure-in-js
+https://leetcode.com/problems/implement-queue-using-stacks/description/ */
+
+
 var MyQueue = function() {
     this.thingy =[]
 };
