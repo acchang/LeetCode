@@ -14,7 +14,10 @@ MyQueue.prototype.push = function(x) {
  * @return {number}
  */
 MyQueue.prototype.pop = function() {
-    this.thingy.shift();
+    if(this.thingy.length > 0){
+        return this.thingy.shift()
+    }
+    return false
 };
 
 /**
