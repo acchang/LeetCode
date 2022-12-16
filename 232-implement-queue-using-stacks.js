@@ -1,5 +1,5 @@
 var MyQueue = function() {
-    
+    this.thingy =[]
 };
 
 /** 
@@ -7,28 +7,28 @@ var MyQueue = function() {
  * @return {void}
  */
 MyQueue.prototype.push = function(x) {
-    
+    this.thingy.push(x)
 };
 
 /**
  * @return {number}
  */
 MyQueue.prototype.pop = function() {
-    
+    this.thingy.shift();
 };
 
 /**
  * @return {number}
  */
 MyQueue.prototype.peek = function() {
-    
+    return this.thingy(0)
 };
 
 /**
  * @return {boolean}
  */
 MyQueue.prototype.empty = function() {
-    
+    return this.thingy.length === 0
 };
 
 /** 
