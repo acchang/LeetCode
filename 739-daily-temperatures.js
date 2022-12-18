@@ -18,3 +18,20 @@ var dailyTemperatures = function(temperatures) {
     output.push(0)
     return output
 };
+// above is too slow, try:
+
+var dailyTemperatures = function(T) {
+    
+    const result = [];
+    for(let i = 0; i < T.length; i++){
+        let nextDay = 0;
+        for(let j = i + 1; j < T.length; j++){
+            if(T[j] > T[i]){
+                nextDay = j - i;
+                break;
+            } 
+        }
+        result.push(nextDay);
+    }
+    return result;
+};
