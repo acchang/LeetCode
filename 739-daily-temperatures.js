@@ -35,3 +35,18 @@ var dailyTemperatures = function(T) {
     }
     return result;
 };
+
+// refining my solution, not that hard:
+
+var dailyTemperatures = function(temperatures) {
+    let output = []
+    for (let i=0; i<temperatures.length; i++){
+        let wait = 0
+        for (j=i+1; j<temperatures.length; j++){
+            if (temperatures[j]>temperatures[i]){wait = j-i; break}
+        }
+        output.push(wait)
+    }
+    return output
+};
+
