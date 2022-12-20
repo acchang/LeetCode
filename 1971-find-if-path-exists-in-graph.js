@@ -69,7 +69,7 @@ visited will still be Set(0) {}
 
 //
 
-var validPath = function(n, edges, source, destination) {
+`var validPath = function(n, edges, source, destination) {
     
     let length = edges.length;
     if(length == 0) return true;
@@ -96,7 +96,7 @@ var validPath = function(n, edges, source, destination) {
             }
         }
         return false;
-};
+};`
 
 
 
