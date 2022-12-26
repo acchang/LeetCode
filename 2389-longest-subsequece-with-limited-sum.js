@@ -4,5 +4,5 @@
  * @return {number[]}
  */
 var answerQueries = function(nums, queries) {
-    
+    // easy?
 };
