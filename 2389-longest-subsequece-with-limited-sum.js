@@ -4,18 +4,22 @@
  * @return {number[]}
  */
 var answerQueries = function(nums, queries) {
-    let totals = []
-    let answer = []
+    let answer = [];
+    let totals = [];
     nums = nums.sort((a,b) => a-b)
-    for (let i=0; i<nums.length; i++){
-        // totals.push(nums[i]+totals[i])
-        nums.reduce((a,c) => (a+c; totals.push(c)))
+    totals.push(nums[0])
+    for (let i=1; i<nums.length; i++){
+        totals.push(nums[i]+totals[i-1])
     }
-    console.log(totals)
-    // go through totals, the index of the number before the total, push into answer
-    
-};
 
-0, 1, 3, 7, 12
-1,2,4,5
-3, 10, 21
+console.log(totals)
+
+    for (let j=0; j<queries.length; j++){
+        for (let k=0; k<totals.length; k++){
+            console.log(queries[j], totals[k], answer)
+            if (queries[j]>totals[k]){
+                answer.push(k)
+            }
+        }
+    }
+};
