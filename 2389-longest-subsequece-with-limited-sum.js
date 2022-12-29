@@ -12,14 +12,15 @@ var answerQueries = function(nums, queries) {
         totals.push(nums[i]+totals[i-1])
     }
 
-// 1 3 7 12
-// 3 10 21
+// 0 1 2 3
+// 1 3 7 12 totals
+// 3 10 21 queries
 
     for (let j=0; j<queries.length; j++){
         for (let k=0; k<totals.length; k++){
             console.log(queries[j], totals[k], answer)
             if (totals[k]>queries[j]){
-                answer.push(k)
+                answer.push(k+1)
             }
         }
     }
