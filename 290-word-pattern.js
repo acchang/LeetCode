@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/word-pattern/
+
 /**
  * @param {string} pattern
  * @param {string} s
@@ -5,4 +7,4 @@
  */
 var wordPattern = function(pattern, s) {
     
-};
+}; 
