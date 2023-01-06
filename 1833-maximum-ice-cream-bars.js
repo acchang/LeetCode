@@ -12,3 +12,18 @@ var maxIceCream = function(costs, coins) {
         else {return i};
     }
 };
+
+// this one is pretty good, slower but better memory
+
+var maxIceCream = function (costs, coins) {
+    let i = 0, count = 0;
+    costs.sort((a, b) => a - b);
+    while (i <= costs.length) {
+        if (costs[i] <= coins) {
+            coins -= costs[i];
+            count++;
+        }
+        i++;
+    }
+    return count;
+};
