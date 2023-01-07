@@ -5,6 +5,7 @@
  * @param {number[]} cost
  * @return {number}
  */
+
 const canCompleteCircuit = function(gas, cost) {
   let n = gas.length;
     let start = 0;
@@ -17,11 +18,9 @@ const canCompleteCircuit = function(gas, cost) {
           start = i+1;
 // if tank goes negative, then set Tank to zero and set new loop.
         }
-        else{
-          if (i-start+1==n){
+        if (i-start+1==n){
 // if tank is not negative, see if i am at the end of the loop... i minust start plus 1.`
           return start}
-        }
     }
 return -1
 };
