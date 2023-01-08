@@ -12,12 +12,9 @@ var maxPoints = function(points) {
     for (let i=0; i<points.length; i++){
         for (let j=0; j<points.length; j++){
             slopesProp = getSlope(points[i], points[j])
-            console.log("slope:" + slopesProp)
             if (slopesProp in slopesObject){slopesObject[slopesProp] += 1} else {slopesObject[slopesProp] = 1};
-    console.log(j, slopesObject)
         }
     let latestMax = Math.max(...(Object.values(slopesObject))) + 1
-    console.log("LM: " + latestMax)
     if (latestMax > answerMax){answerMax = latestMax}
     slopesObject = {}
     }
