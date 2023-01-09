@@ -13,16 +13,32 @@
  * @return {number[]}
  */
 var preorderTraversal = function(root) {
-    if(!root) return null;
+    if(!root) return [];
     const stack = [root];
     const result = [];
-
     while (stack.length) {
         let node = stack.pop();
         result.push(node.val);
         if (node.right) stack.push(node.right);
-        if (node.left) stack.push(node.eft);
+        if (node.left) stack.push(node.left);
     }
+    return result;
+};
+
+// from: https://www.youtube.com/watch?v=LK0ws89S78E&t=343s
+// video shows pre-order traversal
+// explanation of how parameteris written: https://support.leetcode.com/hc/en-us/articles/360011883654-What-does-1-null-2-3-mean-in-binary-tree-representation-
+
+var preorderTraversal = function(root) {
+    if (!root) return []; 
+    const result = []
+    const preorder = (node) => {
+        if (!node) return null;
+        result.push(node.val);
+        if(node.left) preorder(node.left);
+        if (node.right) preorder(node.right);
+    }
+    preorder(root);
     return result;
 };
 
