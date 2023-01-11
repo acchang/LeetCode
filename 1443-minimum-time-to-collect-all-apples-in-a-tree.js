@@ -25,12 +25,28 @@ var minTime = function(n, edges, hasApple) {
 // children is [1,2,0,4,5,0,3,6,2,1,1,2] but that obscures children[0] is [ 1, 2 ] and children[2] is [ 0, 3, 6 ]
 
     let res = 0;
+            // console.log(children)
+            //[ [ 1, 2 ], [ 0, 4, 5 ], [ 0, 3, 6 ], [ 2 ], [ 1 ], [ 1 ], [ 2 ] ]
     let dfs = function (node, parent) {
         let val = false
         for (let child of children[node]) {
-            if (child === parent) continue
+            // for 1 or 2 of 0
+            // round 2: for [0,4,5] of 1
+            console.log("test", children[node], node)
+            if (child === parent) {console.log("no"); continue}
+            // don't proceed if it's the same
+            console.log("yes")
             res++
+            // add one to result
+            console.log (child, parent, res)
+            // 1 undefined 1
+            // round 2 is 4, 0, 2
             let bol = dfs(child, node)
+            // run dfs again of 1,0, where 1 is now the node and parent is zero
+            /// round 2: dfs again, 4 is node, parent is 1 
+
+
+            console.log("bol", bol, child, node)
             if (bol) res++
             else res--
             val = val || bol
@@ -41,3 +57,6 @@ var minTime = function(n, edges, hasApple) {
     dfs(0)
     return res
 };
+
+
+
