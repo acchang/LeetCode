@@ -3,10 +3,15 @@
  * @return {number[]}
  */
 var plusOne = function(digits) {
-    let concatted = ""
-    for (let i=0; i<digits.length; i++){
-        concatted += digits[i].toString()
+    let answer = []
+    let carry = 1
+    for (let i=digits.length-1; i>=0; i--){
+        if ( (digits[i] + carry) > 9) {answer.unshift(0)}
+        else {
+                answer.unshift(arr[i] + carry)
+                carry = 0  
+            }
     }
-    let answer = parseInt(concatted) + 1
-    return answer.toString().split("")
+    if (answer[0]==0){answer.unshift(1)}
+    return answer
 };
