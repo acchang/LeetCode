@@ -58,8 +58,43 @@ var minTime = function(n, edges, hasApple) {
     return res
 };
 
+// Alternative option
+// https://www.youtube.com/watch?v=-A6hkNg7FN0
 
 
 
+/**
+ * @param {number} n
+ * @param {number[][]} edges
+ * @param {boolean[]} hasApple
+ * @return {number}
+ */
+var minTime = function(n, edges, hasApple) {
+    let map = {}
 
+    for(let [x,y] of edges){
+        if(!map[y]) map[y] = []
+        map[y].push(x)
+    }
+// we create an object with the key as the node and the value as its parent 
+
+    let check = {}
+    let res = 0;
+    for(let i =1; i<hasApple.length; i++){
+        if(hasApple[i]){
+// if that node is true...
+            let cV = i;
+// then we examine that node
+            while(cV !=0 && !check[cV]){
+// not sure why cV cannot be 0, not sure why `!check[cV]` but presumably that's opposite way
+                res +=2;
+                check[cV] = 1;
+// then we assign a value to check so it will invalidate future whiles
+                cV = map[cV]
+// and we go back to the original map array to find a new cV (but not sure why)
+            }
+        }
+    }
+    return res;
+};
 
