@@ -1,5 +1,7 @@
 // https://leetcode.com/problems/pascals-triangle/
 
+// from: https://leetcode.com/problems/pascals-triangle/solutions/38117/javascript-solution/
+
 /**
  * @param {number} numRows
  * @return {number[][]}
