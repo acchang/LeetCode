@@ -7,14 +7,13 @@
  * @return {string}
  */
 var smallestEquivalentString = function(s1, s2, baseStr) {
-    // abc
-    // cde
-    // eed
-    // aab
-
-    //parker
-    //morris
+    // group the equivalents
+    // then find the smallest of the base string
+    // make an object with index corresponding each string
     
-    //parser
-
-};
+    //abc
+    //cde
+    // ac bd ce
+    
+    
+    };
