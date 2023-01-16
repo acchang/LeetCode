@@ -2,7 +2,7 @@
 // https://www.youtube.com/watch?v=eQGn1xbt1JU
 // https://www.freecodecamp.org/news/implementing-a-linked-list-in-javascript/
 // https://www.youtube.com/watch?v=ZBdE8DElQQU
-
+// https://duncan-mcardle.medium.com/leetcode-problem-21-merge-two-sorted-lists-javascript-b5a4de3da319
 
 /**
  * Definition for singly-linked list.
@@ -46,4 +46,24 @@ var mergeTwoLists = function(list1, list2) {
     // the includes the 0
     console.log(dummy.next)
     return dummy.next
+};
+
+// recursive
+
+
+var mergeTwoLists = function (l1, l2) {
+    // If either list is empty, return the other list's node
+    if (l1 == null) return l2;
+    if (l2 == null) return l1;
+
+    // If l1 is lower
+    if (l1.val < l2.val) {
+        l1.next = mergeTwoLists(l1.next, l2);
+        return l1;
+    }
+    // If l2 is lower
+    else {
+        l2.next = mergeTwoLists(l1, l2.next);
+        return l2;
+    }
 };
