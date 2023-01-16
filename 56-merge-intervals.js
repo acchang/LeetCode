@@ -21,6 +21,7 @@ var merge = function(intervals) {
     return answer
 };
 
+// The key here was using .at and returning a second array. That allowed me to compare the current and previous. Because one would be deleted, I could not alter the intervals array without using some sort of while loop or recursive solution.
 
 // working through this solution: https://leetcode.com/problems/merge-intervals/solutions/2105757/
 
