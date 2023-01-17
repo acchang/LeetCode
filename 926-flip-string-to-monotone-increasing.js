@@ -4,10 +4,6 @@
  * @param {string} s
  * @return {number}
  */
-/**
- * @param {string} s
- * @return {number}
- */
 
 var minFlipsMonoIncr = function(s) {
     let answer = 0
@@ -46,31 +42,54 @@ or flip one zero
 */
 
 // another solution:
-
+// https://www.youtube.com/watch?v=-vZ7LjWSWzY
+// EASIEST, starts from index of 0. If there is a 1, count it. 
+// if there is a 0 after the 1, then remove from numberOfOnes and add to numberOfFlips
 
 var minFlipsMonoIncr = function(s) {
-    const n = s.length;
-    let zeros = 0;
-    
-    for (let i = n - 1; i >= 0; i--) {
-        if (s.charAt(i) === "0") zeros++;
+    let numberOfFlips = 0;
+    let numberOfOnes = 0;
+    for (let c of s) {
+        if (c == '1') {
+            numberOfOnes++
+        }
+        else if (numberOfOnes > 0){
+        // if there's a 1 and the current is not a 1, flips increases
+            numberOfFlips++;
+        // ones decreases too bc if s:0101, then 1 is matched with 0 and cancels out
+            --numberOfOnes;
+
+        }
     }
-    // count the zeros from the end
-    console.log(zeros)
-    let minFlips = Infinity;
+    return numberOfFlips
+};
+
+
+// another solution, MUCH more complicated:
+
+var minFlipsMonoIncr = function(s) {
+    let zeros = 0;
     let ones = 0;
-    
-    for (let i = 0; i < n; i++) {
-        minFlips = Math.min(minFlips, ones + zeros);
-        // first go is 0 (ones) + zeros from the end
-        // 00011000
-        // 6, 2
-        // 2 is the answer, zeroes go to 0
-        // 010110
-        // z=3, look at minFlips
-        if (s.charAt(i) === "1") ones++;
+    for (let c of s) {if (c === "0") zeros++;}
+
+    let minFlips = Infinity;
+    for (let c of s) {
+        minFlips = Math.min(minFlips, ones + zeros); 
+        if (c === "1") {ones++};
         else zeros--;
     }
+
+// ans is 2
+// 0 MF: inf vs 3 (3); z:2,
+// 0 MF: 3 vs 2+0 (2); z:1, 
+// 1 MF: 2 vs 1+0 (1); o:1, z:1,
+// 1 MF: 1 vs 2 (1); o:2, z:1
+// 0 MF: 1 vs 3 (1); o:2, z:0
+// the zeros count down because they will have to be flipped, or the ones have to be. If all zeros go, then just ones have to be flipped. 
+
+// end:
+// 1 vs 2 = 1
+// change two ones or one zero
 
     minFlips = Math.min(minFlips, ones + zeros);
     return minFlips;
