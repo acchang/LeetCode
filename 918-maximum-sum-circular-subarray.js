@@ -6,16 +6,11 @@
  */
 var maxSubarraySumCircular = function(nums) {
     let doubled = [...nums, ...nums];
-    let curMax = 0
-    let globalMax = nums[0]
+    let curMax = -Number.MAX_VALUE
+    let globalMax = -Number.MAX_VALUE
     for (let i=0; i<doubled.length; i++){
-        curMax = Math.max(nums[i], nums[i]+nums[i-1])
-
-        if (doubled[i] > globalMax){
-            doubled[i] = curMax
+        curMax = Math.max(doubled[i], curMax+doubled[i])
+        if (curMax>globalMax){globalMax=curMax}
         }
-
-             
-    }
-    
+    return globalMax
 };
