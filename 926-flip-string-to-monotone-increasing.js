@@ -65,18 +65,58 @@ var minFlipsMonoIncr = function(s) {
 };
 
 
-// another solution, MUCH more complicated:
+// another solution, MUCH more complicated. 
 
 var minFlipsMonoIncr = function(s) {
     let zeros = 0;
     let ones = 0;
     for (let c of s) {if (c === "0") zeros++;}
+    // essentially count the zeroes
 
     let minFlips = Infinity;
     for (let c of s) {
         minFlips = Math.min(minFlips, ones + zeros); 
-        if (c === "1") {ones++};
-        else zeros--;
+            if (c === "1") {ones++}
+        // upon the first character, if it's a one, then one gets incremented
+            else zeros--;
+        // if it's a zero, it gets decremented.
+
+        // a one may have to change if zeros follow. A zero doesn't have to change, so it disappears. If you start with all zeroes (00000), infinity or 4, then reduce to zero. If 0001001 you get o1, z2
+
+        // 00100 inf or 4; 4; z3 o0
+        // 0100 4 or 3; 3; z2 o0 
+        // 100 3 or 2; 2; z2 o1
+        // 00 2 or 3; 2; z1 o1
+        // 0 2 or 2; 2; z1 o1
+        // 1 or 2 = 1
+
+        // the appearance of a "one" means minFlips increases, "zero" means decreases.
+        
+        // minflips is the minimum of ones + zeros now or previously
+        // 0010 (1) either flips
+        // 00100 (1) one flips (this is the last one)
+        // 0010011( 2 zeros or 3 ones)
+        // 001001 (1) one flips
+        // 01011 (1) either flips; 011011, zero flips
+        // the minimum is essentially how many ones before all zeros are out of the way? 
+
+        // 0010011 inf vs 4z; 4; 0o 3z -- 4 is how many zeros to make all ones
+        // 010011 4 vs 3z; 3; 0o 2z 
+        // 10011 3 vs 2z; 2; 1o 2z -- 1 gets added bc its a flip before zeros
+        // 0011 2 vs 3; 2; 1o 1z
+        // 011 2 vs 2; 2; 0o 1z
+        // 11 2 vs 1; 1;
+        // 1 1 vs 1; 1 
+
+
+        // 001 inf/ 2z; 2; 0o 1z
+        // 01 2/ 1; 1; 0o 0z
+        // 0 1/ 0; 0; 1o 0z
+        // 0!
+
+
+        // when all zeroes flipped then it's just the ones
+        // if ones are flipped then 
     }
 
 // ans is 2
