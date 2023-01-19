@@ -73,8 +73,11 @@ prefixRemWrong = (prefixRem + num % k)
 It's because % is not modulo but remainder.
 so: 
 I put 2 + -3 % 5 into Google, it interprets it at (2 + (-3) modulo 5) = 4. But when I put console.log(2 + -3 % 5) into the console, I get -1. 
-2 + -3 = -1 divided by 5, remainder is -1
+-3 divided by 5, remainder is -3 + 2 = -1 
 
 Technically, "modulo" and "remainder" are different mathematical operations.  JavaScript does not have a modulo operator, "%" is the remainder operator.  See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Remainder
 
+so to turn it over:
 
+((2 + -3 % 5 + 5) % 5)
+-1 + 5 = 4 % 5 = remainder is 4
