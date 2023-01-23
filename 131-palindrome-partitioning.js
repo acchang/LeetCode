@@ -6,6 +6,29 @@
  * @return {string[][]}
  */
 
+var partition = function(s) {
+    let result = []
+    const dfs = (i, s, stack) => {
+        if (i === s.length){
+            result.push(stack.slice())
+            return;
+        }
+        for (let j = i; j < s.length; j++) {
+            if (isPalindrome(s, i, j)){
+                stack.push(s.slice(i, j+1));
+                console.log("1", stack)
+                dfs(j+1, s, stack)
+                    // after stack = ['a' ], then stack = ['a','a'], then [ 'a', 'a', 'b' ]
+                stack.pop();
+                    // last dfs call ends so stack is now [ 'a', 'a' ], then [ 'a' ] to []
+            }
+            // then i moves on to next, ie ['aa']
+        }
+    }
+    dfs(0, s, []);
+    return result
+}
+
 const isPalindrome = (s, start, end) => {
     while(start < end) {
         if (s[start] !== s[end]) return false;
@@ -15,38 +38,10 @@ const isPalindrome = (s, start, end) => {
     return true
 }
 
-var partition = function(s) {
-    let result = []
-
-    const dfs = (i, s, slate) => {
-        if (i === s.length){
-            result.push(slate.slice())
-            return;
-        }
-
-        for (let j = i; j < s.length; j++) {
-            if (isPalindrome(s, i, j)){
-                slate.push(s.slice(i, j+1));
-                dfs(j+1, s, slate)
-                slate.pop(); 
-            }
-        }
-    }
-    dfs(0, s, []);
-    return result
-}
-
-
-
-
-
 
 // run depth first search
 // partition first, evaluate, eliminate
 // partition again, 
-
-    return answer
-}
 
 var isPalindrome = function(word) {
 for (let i=0; i<Math.floor(word.length/2); i++){
@@ -56,10 +51,3 @@ for (let i=0; i<Math.floor(word.length/2); i++){
     }
 return word
 }
-
-
-// EVERY substring is a palindrome
-// uses backtracking, try to solve previous
-
-// divide in half and keep doing so, and put in answer if correct
-    // if odd then ignore the middle character, or take for end, and match
