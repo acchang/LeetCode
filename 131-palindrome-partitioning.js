@@ -1,17 +1,50 @@
 // Jan 21 2023: https://leetcode.com/problems/palindrome-partitioning/
+// https://www.youtube.com/watch?v=cWNEl4HE2OE
 
 /**
  * @param {string} s
  * @return {string[][]}
  */
 
-var partition = function(s) {
-    let answer = []
-    let part = []
-    if (i === s.length){
-        answer.push(part)
+const isPalindrome = (s, start, end) => {
+    while(start < end) {
+        if (s[start] !== s[end]) return false;
+        start++
+        end--
     }
-    
+    return true
+}
+
+var partition = function(s) {
+    let result = []
+
+    const dfs = (i, s, slate) => {
+        if (i === s.length){
+            result.push(slate.slice())
+            return;
+        }
+
+        for (let j = i; j < s.length; j++) {
+            if (isPalindrome(s, i, j)){
+                slate.push(s.slice(i, j+1));
+                dfs(j+1, s, slate)
+                slate.pop(); 
+            }
+        }
+    }
+    dfs(0, s, []);
+    return result
+}
+
+
+
+
+
+
+// run depth first search
+// partition first, evaluate, eliminate
+// partition again, 
+
     return answer
 }
 
