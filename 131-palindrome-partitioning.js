@@ -14,13 +14,13 @@ var partition = function(s) {
             return;
         }
         for (let j = i; j < s.length; j++) {
+            // start here
             if (isPalindrome(s, i, j)){
                 stack.push(s.slice(i, j+1));
-                console.log("1", stack)
                 dfs(j+1, s, stack)
                     // after stack = ['a' ], then stack = ['a','a'], then [ 'a', 'a', 'b' ]
                 stack.pop();
-                    // last dfs call ends so stack is now [ 'a', 'a' ], then [ 'a' ] to []
+                    // last dfs call ends, pop so stack is now [ 'a', 'a' ], then [ 'a' ] to []
             }
             // then i moves on to next, ie ['aa']
         }
@@ -38,16 +38,87 @@ const isPalindrome = (s, start, end) => {
     return true
 }
 
+/* cannot just clear stack with stack = [] because
+Output
+[["c","d","d"],["dd"]]
+Expected
+[["c","d","d"],["c","dd"]]
+*/
+
+
+
 
 // run depth first search
 // partition first, evaluate, eliminate
 // partition again, 
 
-var isPalindrome = function(word) {
-for (let i=0; i<Math.floor(word.length/2); i++){
-    if (word[i] === word[word.length-1-i]){
-        continue
-    } else break
-    }
-return word
-}
+// var isPalindrome = function(word) {
+// for (let i=0; i<Math.floor(word.length/2); i++){
+//     if (word[i] === word[word.length-1-i]){
+//         continue
+//     } else break
+//     }
+// return word
+// }
+
+
+
+
+
+
+// this is what happens with stack = [], there is no stepping back
+no
+1 [ 'c' ]
+no
+1 [ 'c', 'd' ]
+no
+1 [ 'c', 'd', 'd' ]
+3 [ 'c', 'd', 'd' ]
+2 []
+2 []
+1 [ 'dd' ]
+3 [ 'dd' ]
+2 []
+2 []
+
+
+// this is how it should go:
+
+"no"
+1 ["c"]
+"no"
+1 ["c","d"]
+"no"
+1 ["c","d","d"]
+"3" ["c","d","d"] -- it is palindromes to the end so it's pushed
+"2" ["c","d"] -- popped off last
+"2" ["c"] -- pop off another
+"1" ["c","dd"] -- this is the turning point
+"3" ["c","dd"]
+"2" ["c"]
+"2" []
+
+
+
+
+
+"no" x
+"new for" 0 x
+"1j" 0 ["c"] x
+"no" x
+"new for" 1 x
+"1j" 1 ["c","d"] x
+"no"
+"new for" 2
+"1j" 2 ["c","d","d"]
+"3" ["c","d","d"]
+"2" ["c","d"]
+"2" ["c"]
+// why doesn't j backtrack to []?
+"new for" 2
+"1j" ["c","dd"]
+"3" ["c","dd"]
+"2" ["c"]
+"2" []
+"new for" 1
+"new for" 2
