@@ -99,7 +99,7 @@ no
 "2" []
 
 
-
+There was no "no end condition" log after "popped" ["c","d"] because that loop reached its end, so it returned to the calling function which had another .pop() before continuing its loop
 
 
 "no" x
