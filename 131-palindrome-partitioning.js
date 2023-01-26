@@ -122,3 +122,43 @@ There was no "no end condition" log after "popped" ["c","d"] because that loop r
 "2" []
 "new for" 1
 "new for" 2
+
+
+
+var partition = function(s) {
+    let result = []
+    const dfs = (i, s, stack) => {
+        if (i === s.length){
+            result.push(stack.slice())
+            console.log("ended", result)
+            return;
+        } else {console.log('no end condition')}
+        for (let j = i; j < s.length; j++) {
+          console.log("new for loop", j)
+            if (isPalindrome(s, i, j)){
+                stack.push(s.slice(i, j+1));
+                dfs(j+1, s, stack)
+                 // "c", 'd', "d"
+                 // "aa" "b"
+                stack.pop()
+                // every one pushed is popped
+                console.log("popped", stack)
+            } 
+          
+        }
+    }
+    dfs(0, s, []);
+    return result
+}
+
+const isPalindrome = (s, start, end) => {
+    while(start < end) {
+        if (s[start] !== s[end]) return false;
+        start++
+        end--
+    }
+    return true
+}
+
+console.log(partition("aab"))
+//try
