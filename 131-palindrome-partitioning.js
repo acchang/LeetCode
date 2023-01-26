@@ -133,6 +133,14 @@ var partition = function(s) {
             console.log("ended", result)
             return;
         } else {console.log('no end condition')}
+
+// aab turns into a, a, b OR aa b
+// cdd turns into c, d, d OR c dd
+
+// aab pops until [] then rises again to aa then b
+// cdd pops until [c] then adds dd
+
+
         for (let j = i; j < s.length; j++) {
           console.log("new for loop", j)
             if (isPalindrome(s, i, j)){
