@@ -170,3 +170,8 @@ const isPalindrome = (s, start, end) => {
 
 console.log(partition("aab"))
 //try
+
+handwriting this out:
+
+https://codepen.io/acchang/pen/PoBeKbO
+
