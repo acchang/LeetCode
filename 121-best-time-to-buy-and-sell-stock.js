@@ -25,22 +25,38 @@ cp = 5-1 = 4; tp =4; No
 cp = 3-1 = 2; No tp =4; No
 cp = 6-1 = 5; tp =5; No
 cp = 4-1 = 3; No tp =5; No
+
+Translated from Python:
+https://medium.com/swlh/crack-leetcode-121-best-time-to-buy-and-sell-stock-f0f53be4e36c
+
 */
 
 
 
-// Not working:
+// mess with Kadane's
+// tried: https://medium.com/@rsinghal757/kadanes-algorithm-dynamic-programming-how-and-why-does-it-work-3fd8849ed73d
+// kadane's algo JS: https://www.youtube.com/watch?v=edDqVOOEAYU
+// https://leetcode.com/problems/best-time-to-buy-and-sell-stock/solutions/1094656/javascript-kadane-s-algorithm-all-solutions/?q=kadane+javascript&orderBy=most_relevant
+
+
+
 /**
  * @param {number[]} prices
  * @return {number}
  */
 var maxProfit = function(prices) {
-    let currProfit = 0;
-    let maxProfit = 0;
-
-    for (let i=1; i<prices.length; i++){
-        currProfit = Math.max(0, maxProfit += prices[i] - prices[i-1]);
-        maxProfit = Math.max(currProfit, maxProfit)
+    let currentProfit = 0;
+    let globalProfit = 0;
+    let buy = prices[0];
+    let sell = 0;
+        
+    for(let i = 1 ; i < prices.length ; i++){
+        sell = prices[i];
+        currentProfit = sell - buy;
+        
+        if(currentProfit > globalProfit){globalProfit = currentProfit}
+        if(prices[i] < buy){buy = prices[i]}
     }
-    return maxProfit;
-};
+    
+    if(globalProfit < 0){return 0} else {return globalProfit}
+}
