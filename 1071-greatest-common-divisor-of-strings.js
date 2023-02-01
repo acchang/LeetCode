@@ -27,3 +27,28 @@ var gcdOfStrings = function(str1, str2) {
 }
 
 
+// faster: https://www.youtube.com/watch?v=KZxEvHd0VaY
+// also from: https://leetcode.com/problems/greatest-common-divisor-of-strings/solutions/3024822/greatest-common-divisor-of-strings/?orderBy=most_relevant
+
+
+/**
+ * @param {string} str1
+ * @param {string} str2
+ * @return {string}
+ */
+
+
+var gcdOfStrings = function(str1, str2) {
+    if (str1+str2 != str2+str1){return ""}
+    let a = str1.length
+    let b = str2.length
+
+    var gcd = function(a, b) {
+        if (b) {
+            return gcd(b, a % b);
+        } else {
+            return Math.abs(a);
+        }
+    }
+    return str1.slice(0,gcd(a,b))
+} 
