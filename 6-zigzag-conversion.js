@@ -11,6 +11,7 @@ let convert = function(s, numRows) {
     let rowArray = new Array(numRows).fill("")
     let chunkLength = 2*numRows-2
     let chunkArray = []
+    let position
     for (let i = 0; i < s.length; i += chunkLength) {
     chunkArray.push(s.slice(i, i + chunkLength))
     }
@@ -18,13 +19,29 @@ let convert = function(s, numRows) {
     console.log(chunkArray)
 
     for (let i=0; i<chunkArray.length; i++){
-        for (let j=0; j<numRows; j++) {
+        for (let j=0; j<chunkArray[i].length; j++) {
+        // for (let j=0; j<numRows; j++) {
             rowArray[j] = rowArray[j].concat(chunkArray[i][j])
+            // position = rowArray[j- numRows.length-([j]%numRows)]
+            // rowArray[position] = rowArray[position].concat(chunkArray[i][j])
         }
     }
     console.log(rowArray)
 }
-//length=6
+
+
+
+// works:
+// for (let i=0; i<chunkArray.length; i++){
+//     for (let j=0; j<numRows; j++) {
+//         rowArray[j] = rowArray[j].concat(chunkArray[i][j])
+//     }
+// }
+
+
+
+//chunklength=6
+//rows=4
 //paypal
 //012345
 //0
