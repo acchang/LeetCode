@@ -5,6 +5,7 @@
  * @param {number} numRows
  * @return {string}
  */
+
 let convert = function(s, numRows) {
     if (numRows == 1) {return s;} 
 
@@ -15,60 +16,18 @@ let convert = function(s, numRows) {
     for (let i = 0; i < s.length; i += chunkLength) {
     chunkArray.push(s.slice(i, i + chunkLength))
     }
-    
-    console.log(chunkArray)
 
     for (let i=0; i<chunkArray.length; i++){
         for (let j=0; j<chunkArray[i].length; j++) {
-        // for (let j=0; j<numRows; j++) {
-            rowArray[j] = rowArray[j].concat(chunkArray[i][j])
-            // position = rowArray[j- numRows.length-([j]%numRows)]
-            // rowArray[position] = rowArray[position].concat(chunkArray[i][j])
+        j < numRows ? position = j : position = numRows - (j%numRows) -2
+        rowArray[position] = rowArray[position].concat(chunkArray[i][j])
         }
     }
-    console.log(rowArray)
+    
+    return rowArray.join("")
 }
 
 
-
-// works:
-// for (let i=0; i<chunkArray.length; i++){
-//     for (let j=0; j<numRows; j++) {
-//         rowArray[j] = rowArray[j].concat(chunkArray[i][j])
-//     }
-// }
-
-
-
-//chunklength=6
-//rows=4
-//paypal
-//012345
-//0
-//1+5
-//2+4
-//3
-
-
-
-
-    //iterate through each section and push
-    // 0 to 0 row Array
-    // 1 and length -1 to first
-
-    // collapse or join row Array
-
-
-
-    // add 1 to each numrows
-    // skip first then put in each numRows again
-    
-
-
-    //rows is how many down
-    //down is how many across
-    
-};
 
 // official solution:
 // https://leetcode.com/problems/zigzag-conversion/solutions/2868537/zigzag-conversion/?orderBy=most_relevant
