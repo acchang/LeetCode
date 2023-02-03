@@ -6,14 +6,28 @@
  * @return {string}
  */
 var convert = function(s, numRows) {
-    let rowArray = new Array(numRows);
+    if (numsRows === 1){return s}
+    // an array represesnting each row
+    let rowArray = new Array(numRows).fill("")
+
     let chunkLength = 2*numRows-2
+    let sArray = s.split("")
+    let chunkArray = []
 
-    for (let i=0;i<s.length;i++){
-        if (i%chunkLength === 0){s.split()}
-
-
+    for (let i = 0; i < sArray.length; i += chunkLength) {
+    chunkArray.push(array.slice(i, i + chunkSize))
     }
+
+    console.log(chunkArray)
+}
+
+    //iterate through each section and push
+    // 0 to 0 row Array
+    // 1 and length -1 to first
+
+    // collapse or join row Array
+
+
 
     // add 1 to each numrows
     // skip first then put in each numRows again
@@ -25,6 +39,8 @@ var convert = function(s, numRows) {
     
 };
 
+// official solution:
+// https://leetcode.com/problems/zigzag-conversion/solutions/2868537/zigzag-conversion/?orderBy=most_relevant
 
 
 let convert = function(s, numRows) {
