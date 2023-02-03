@@ -6,6 +6,8 @@
  * @return {string}
  */
 
+// 51% run, 82% memory.
+
 let convert = function(s, numRows) {
     if (numRows == 1) {return s;} 
 
@@ -31,7 +33,7 @@ let convert = function(s, numRows) {
 
 // official solution:
 // https://leetcode.com/problems/zigzag-conversion/solutions/2868537/zigzag-conversion/?orderBy=most_relevant
-
+// 5% run, 5% memory
 
 let convert = function(s, numRows) {
     if (numRows == 1) {
@@ -70,4 +72,40 @@ let convert = function(s, numRows) {
 
     let answer = matrix.map(row => row.join('')).join('');
     return answer.replaceAll(' ', '');
+};
+
+// also book solution, faster:
+// 95% run 65% memory
+
+let convert = function(s, numRows) {
+    if (numRows == 1) {
+        return s;
+    }
+
+    let answer = "";
+    let n = s.length;
+    let charsInSection = 2 * (numRows - 1);
+    
+    for (let currRow = 0; currRow < numRows; ++currRow) {
+        let index = currRow;
+
+        while (index < n) {
+            answer += s[index];
+
+            // If current row is not first or last,
+            // then we have to add one more character of current section.
+            if (currRow != 0 && currRow != numRows - 1) {
+                let charsInBetween = charsInSection - 2 * currRow;
+                let secondIndex = index + charsInBetween;
+
+                if (secondIndex < n) {
+                    answer += s[secondIndex];
+                }
+            }
+            // Jump to same row's first character of next section.
+            index += charsInSection;
+        }
+    }
+    
+    return answer;
 };
