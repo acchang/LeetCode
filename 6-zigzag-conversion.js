@@ -5,21 +5,35 @@
  * @param {number} numRows
  * @return {string}
  */
-var convert = function(s, numRows) {
-    if (numsRows === 1){return s}
-    // an array represesnting each row
+let convert = function(s, numRows) {
+    if (numRows == 1) {return s;} 
+
     let rowArray = new Array(numRows).fill("")
-
     let chunkLength = 2*numRows-2
-    let sArray = s.split("")
     let chunkArray = []
-
-    for (let i = 0; i < sArray.length; i += chunkLength) {
-    chunkArray.push(array.slice(i, i + chunkSize))
+    for (let i = 0; i < s.length; i += chunkLength) {
+    chunkArray.push(s.slice(i, i + chunkLength))
     }
-
+    
     console.log(chunkArray)
+
+    for (let i=0; i<chunkArray.length; i++){
+        for (let j=0; j<numRows; j++) {
+            rowArray[j] = rowArray[j].concat(chunkArray[i][j])
+        }
+    }
+    console.log(rowArray)
 }
+//length=6
+//paypal
+//012345
+//0
+//1+5
+//2+4
+//3
+
+
+
 
     //iterate through each section and push
     // 0 to 0 row Array
