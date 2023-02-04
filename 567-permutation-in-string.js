@@ -1,13 +1,17 @@
+// https://leetcode.com/problems/permutation-in-string/description/
+
 /**
  * @param {string} s1
  * @param {string} s2
  * @return {boolean}
  */
 var checkInclusion = function(s1, s2) {
-    // does s2 contain a form of s1?
-    // all forms of s1 test into s2 is brute force
-    // kadanes? is 1 in? combo of 2?
-    //  check all possible substrings of length n1 in string s2
-    // compare the frequency of characters in each of these substrings to the frequency of characters in string s1
+    for (let i=0; i<s2.length; i++){
+        let chunk = (s2.substring(i, i+s1.length)).split("");
+        let target = s1.split("");
+        console.log(i, chunk, s1.split(""))
+        if (chunk.every(x => target.includes(x))){
+            return true} else continue 
+    }
+    return false
 };
-
