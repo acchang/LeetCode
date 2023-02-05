@@ -75,7 +75,7 @@ var checkInclusion = function(s1, s2) {
 
 
 
-// 82% run, 72% memory; hard to understand
+// 82% run, 72% memory
 // https://leetcode.com/problems/permutation-in-string/solutions/3140957/
 
 var checkInclusion = function(s1, s2) {
@@ -95,7 +95,9 @@ var checkInclusion = function(s1, s2) {
         map[s2[r]]--
         r++
         if (c == n) return true
+    // if count equals s1.length
         if (r - l == n) {
+    // if window is the 
             if (map[s2[l]] >= 0) c--
             map[s2[l]]++
             l++
