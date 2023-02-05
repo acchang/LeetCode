@@ -77,6 +77,7 @@ var checkInclusion = function(s1, s2) {
 
 // 82% run, 72% memory
 // https://leetcode.com/problems/permutation-in-string/solutions/3140957/
+// sliding window concept similar to: https://leetcode.com/problems/find-all-anagrams-in-a-string/solutions/3143433/sliding-window-two-pointers/
 
 var checkInclusion = function(s1, s2) {
     let n = s1.length

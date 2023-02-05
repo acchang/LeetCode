@@ -47,6 +47,39 @@ const findAnagrams = (s, p) => {
 
 
 
+var checkInclusion = function(s1, s2) {
+    let n = s1.length
+    let m = s2.length
+    let map = {}
+    for (let c of s1) {
+        map[c] = (map[c] ? map[c] : 0) + 1
+    }
+    // make a map of s1
+
+    let l = 0, r = 0, c = 0
+    while (r < m) {
+    // while r is less than length of m, count up
+        if (map[s2[r]] > 0) c++
+    // if element of s2 
+        map[s2[r]]--
+        r++
+        if (c == n) return true
+    // if count equals s1.length
+        if (r - l == n) {
+    // if window is the 
+            if (map[s2[l]] >= 0) c--
+            map[s2[l]]++
+            l++
+        }
+    }
+    return false
+};
+
+
+
+
+
+
 // too time consuming 
 var findAnagrams = function(s, p) {
     let answer = []
