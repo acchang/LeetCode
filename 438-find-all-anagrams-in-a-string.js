@@ -3,6 +3,11 @@
  * @param {string} p
  * @return {number[]}
  */
+/**
+ * @param {string} s
+ * @param {string} p
+ * @return {number[]}
+ */
 var findAnagrams = function(s, p) {
     let answer = []
     let pMap = {}
@@ -16,7 +21,7 @@ var findAnagrams = function(s, p) {
         for (let j=0; j<chunk.length; j++){
             if(temp[chunk[j]]){temp[chunk[j]]-- }
         }
-        if (Object.keys(temp)).every(x => x==0)){answer.push[i]}
+        if (Object.values(temp).every((x) => x === 0)){answer.push(i)}
     }
     return answer
 };
