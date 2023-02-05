@@ -11,6 +11,9 @@
 // https://leetcode.com/problems/find-all-anagrams-in-a-string/solutions/1025753/
 
 
+// sort of like the advanced solution here: 
+// https://leetcode.com/problems/permutation-in-string/solutions/3140957/
+
 const findAnagrams = (s, p) => {
     const output = [];
     const neededChars = {};
@@ -25,59 +28,28 @@ const findAnagrams = (s, p) => {
     let count = p.length;
 
     while (right < s.length) {
-        if (neededChars[s[right]] > 0) count--;
+        if (neededChars[s[right]] > 0){count--;}
+        // count only lowers when char found
         neededChars[s[right]]--;
+        // changes the map no matter what
         right++;
         // start from zero, keep going right and checking.
         if (count === 0) output.push(left);
         // if you reach count === 0, then you have an anagram.
         if (right - left == p.length) {
         // if the space between left and right is the length of the anagram
-            if (neededChars[s[left]] >= 0) count++;
+            if (neededChars[s[left]]>= 0) {count++;}
         // AND if the leftmost in S in the map is greater or equal 0, then count goes up
+        // count only goes back up when the window moves on and the one left behind is in the map
+        // must be '>= 0' cannot be just exists because 0 would evaluate to false
             neededChars[s[left]]++;
-        // AND add on the value of that key too.
+        // regardless, the value of that key goes up (if it can be incremented)
             left++;
-        // then move over.
+        // then left moves over.
         }
     }
     return output;
 };
-
-
-
-
-var checkInclusion = function(s1, s2) {
-    let n = s1.length
-    let m = s2.length
-    let map = {}
-    for (let c of s1) {
-        map[c] = (map[c] ? map[c] : 0) + 1
-    }
-    // make a map of s1
-
-    let l = 0, r = 0, c = 0
-    while (r < m) {
-    // while r is less than length of m, count up
-        if (map[s2[r]] > 0) c++
-    // if element of s2 
-        map[s2[r]]--
-        r++
-        if (c == n) return true
-    // if count equals s1.length
-        if (r - l == n) {
-    // if window is the 
-            if (map[s2[l]] >= 0) c--
-            map[s2[l]]++
-            l++
-        }
-    }
-    return false
-};
-
-
-
-
 
 
 // too time consuming 
