@@ -25,8 +25,12 @@ var jump = function(nums) {
     let jumps = 0; right = 0;
     let chunk = nums.slice(left,1);
     while (right <= nums.length) {
-        let max = 0
-        max = Math.max(...chunk)
+        // you need the i because you need to know which index to add to
+        for (let i=0; i<chunk.length; i++){
+            max = Math.max(max, chunk[i])
+        }
+        chunk = nums.slice(i, i+chunk[i])
+        // can't do it this way bc won't know where to Stop as right in while condition.
         left = right+1
         right = max
         jumps++
