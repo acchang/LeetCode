@@ -2,28 +2,34 @@
  * @param {number[]} nums
  * @return {number}
  */
-
-
-
-
-// Just got lucky with this, for some reason the spread operator for chunk slows things a lot.
-
 var jump = function(nums) {
-    if (nums[0]===0){return 0}
-    if (nums.length===1){return 0}
-    let start = 0;
-    let jumps = 0;
-    let chunk = nums.slice(start,1);
-    while (start <= nums.length) {
+    let n = nums.length
+    let jumps = 0
+    let left = 0, right = 0
+
+    while (right < n-1){
+        let max = 0
+        for (let i = 0; i<=right; i++){
+            max = Math.max(max, i + nums[i])
+        }
+        left = right + 1
+        right = max
+        jumps ++
+    }
+return jumps
+};
+
+// Kind of, but really. Intuition is right but coding is off
+var jump = function(nums) {
+    let left = 0;
+    let jumps = 0; right = 0;
+    let chunk = nums.slice(left,1);
+    while (right <= nums.length) {
+        let max = 0
+        max = Math.max(...chunk)
+        left = right+1
+        right = max
         jumps++
-        // (console.log(jumps))
-        greatestJump = Math.max(...chunk)
-        // console.log("chunk", chunk)
-        // console.log("gj", greatestJump)
-        chunk = nums.slice(start,greatestJump+1);
-        // console.log("new chunk", chunk)
-        start = greatestJump
-        // console.log("-----")
     }
     return jumps
 }
