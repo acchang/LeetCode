@@ -7,4 +7,14 @@ function consonantCount(str) {
         if (consonants.includes(str[i])){counter ++}
     return counter
     }
-    
+
+// similar, but uses indexOf instead of includes, eliminates a variable.
+
+const consonantCount = (str) => {
+	let count = 0
+	for (const c of str) {
+		if ("BCDFGHJKLMNPQRSTVWXYZbcdfghjklmnpqrstvwxyz".indexOf(c) >= 0) count++
+	}
+
+	return count
+}
