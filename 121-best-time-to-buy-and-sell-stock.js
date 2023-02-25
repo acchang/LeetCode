@@ -31,14 +31,10 @@ https://medium.com/swlh/crack-leetcode-121-best-time-to-buy-and-sell-stock-f0f53
 
 */
 
-
-
 // mess with Kadane's
 // tried: https://medium.com/@rsinghal757/kadanes-algorithm-dynamic-programming-how-and-why-does-it-work-3fd8849ed73d
 // kadane's algo JS: https://www.youtube.com/watch?v=edDqVOOEAYU
 // https://leetcode.com/problems/best-time-to-buy-and-sell-stock/solutions/1094656/javascript-kadane-s-algorithm-all-solutions/?q=kadane+javascript&orderBy=most_relevant
-
-
 
 /**
  * @param {number[]} prices
