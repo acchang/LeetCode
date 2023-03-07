@@ -9,7 +9,8 @@ var minimumTime = function(time, totalTrips) {
 
     while (currentTrips < totalTrips){
         currentTime ++
-        currentTrips = time.map(e => Math.floor(currentTime*1/e)).reduce((acc, cV) => acc + cV)
+        currentTrips = time.reduce((acc,cV) => acc + Math.floor(currentTime*(1/cV)), 0)
+        console.log(currentTrips)
         }
         return currentTime
 };
