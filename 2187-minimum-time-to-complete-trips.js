@@ -10,7 +10,7 @@ var minimumTime = function(time, totalTrips) {
     while (currentTrips < totalTrips){
         currentTime ++
         currentTrips = time.reduce((acc,cV) => acc + Math.floor(currentTime*(1/cV)), 0)
-        console.log(currentTrips)
         }
+        // needs initial value, if not, accumulates to first in array
         return currentTime
 };
