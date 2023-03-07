@@ -4,7 +4,13 @@
  * @return {number}
  */
 var minimumTime = function(time, totalTrips) {
-    take the time array and make each the denominator (use map)
-    build a loop and each time, add to itself, take floor of each, lay out a counter
-    when the sum is greater than totalTrips, that is your answer.
+    let tripsInOne = time.map(e => 1/e)
+    let currentTrips = 0
+    let currentTime = 0
+
+    while (currentTrips < totalTrips){
+        currentTime ++
+        currentTrips = tripsInOne.map(e => Math.floor(currentTime*e)).reduce((acc, cV) => acc + cV)
+        }
+        return currentTime
 };
