@@ -28,17 +28,32 @@ return high
  * @param {number} totalTrips
  * @return {number}
  */
-var minimumTime = function(time, totalTrips) {
-    let low = 1
-    let high = Math.min(...time) * totalTrips
+var minEatingSpeed = function(piles, h) {
+    let slow = 1
+    let fast = Math.max(...piles)
 
-    while (high>low){
-        let mid = Math.floor((low+high)/2)
-        let trips = time.reduce((acc, cur) => acc + Math.floor(mid / cur), 0)
-        if (trips >= totalTrips){high = mid }
-        if (trips < totalTrips) {low = mid + 1}
+    while (fast>slow){
+        console.log("f", fast, "s", slow)
+        let mid = Math.ceil((slow+fast)/2)
+        let time = piles.reduce((acc, cur)=> acc + Math.ceil(cur/mid), 0)
+        console.log("m", mid, "t", time)
+        if (time>=h){fast = mid}
+        if (time<h){slow = mid + 1}
     }
-return low
+return slow
 };
+
+f 11 s 1
+m 12/2=6 t 6 ok 
+
+f 11 s 7 (6<h)
+m 9 t 5 (9 is too fast, 5<h of 8) ok
+
+f 11 s 10 ok
+m 11 t 4
+
+
+f 30 s 1
+m 16 t 8
 
 
