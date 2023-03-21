@@ -26,3 +26,30 @@ var zeroFilledSubarray = function(nums) {
       
 
   
+// more efficient alt solution: https://leetcode.com/problems/number-of-zero-filled-subarrays/solutions/2330736/javascript-counting/?q=javascript&orderBy=most_relevant
+// helper function uses math trick instead of factorializing with addition
+// did not have to count backwards, works the same way
+
+  var zeroFilledSubarray = function(nums) {
+    function getOutcome(n) {
+        return n * (n + 1) / 2
+    }
+    
+    let result = 0
+    let count = 0
+    for (const val of nums.values()) {
+        if (val === 0) {
+            count++
+        } else {
+            const outcome = getOutcome(count)
+            result += outcome
+            count = 0
+        }
+    }
+    if (count) {
+        const outcome = getOutcome(count)
+        result += outcome
+        count = 0
+    }  
+    return result
+};
