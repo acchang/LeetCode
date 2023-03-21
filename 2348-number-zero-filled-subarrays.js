@@ -53,3 +53,52 @@ var zeroFilledSubarray = function(nums) {
     }  
     return result
 };
+
+// Refactoring my code:
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var zeroFilledSubarray = function(nums) {
+    function summedCounter(n) {return n * (n + 1) / 2}
+    let answer = 0
+    let counter = 0
+    for (let i = 0; i<nums.length; i++){
+        if (nums[i] === 0){counter++}
+        if (nums[i] != 0){
+            answer += summedCounter(counter)
+            counter = 0
+            }
+        }
+    answer += summedCounter(counter)
+    return answer
+  };
+
+
+// One more refactor with my version of summed counter as a helper function
+
+var zeroFilledSubarray = function(nums) {
+    function summedCounter(n) {
+        let total = 0
+        while (n>0){
+            total += n
+            n--
+        }
+        return total
+    }; 
+
+    let answer = 0
+    let counter = 0
+    for (let i = 0; i<nums.length; i++){
+        if (nums[i] === 0){counter++}
+        if (nums[i] != 0){
+                answer += summedCounter(counter)
+                counter = 0
+            }
+        }
+
+    answer += summedCounter(counter)
+    return answer
+  };
+
