@@ -8,10 +8,12 @@
  * @return {number}
  */
 
+// clever but copied from others and named myself
+
 var mincostTickets = function(days, cost) {
-    // Initilize dp array to be the size of the last day plus 1
+    // Create an array as long as the last days entry plus 1 bc it will include zero)
       let dp = new Array(days[days.length - 1] + 1);
-      // Base case
+      // when comparing the lowest, dp at 0 is 0
       dp[0] = 0;
       // Loop through all the days
       for (let i = 1; i < dp.length; i++) {
@@ -22,8 +24,11 @@ var mincostTickets = function(days, cost) {
         } else {
           dp[i] = Math.min(
             dp[Math.max(0, i - 1)] + cost[0],
+        // find dp of the day before or i-1 and add the cost for 1 day
             dp[Math.max(0, i - 7)] + cost[1],
+        // find dp of 0 until the day is past 7, and add to the minimum
             dp[Math.max(0, i - 30)] + cost[2]
+        // same as previous but longer duration
           );
         }
       }
@@ -31,10 +36,7 @@ var mincostTickets = function(days, cost) {
       return dp[dp.length - 1];
     };
 
-    
-
-
-// one solution
+// another solution
 var mincostTickets = function(days, costs) {
     const [one, seven, thirty] = costs;
     const memo = new Map()
