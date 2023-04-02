@@ -6,14 +6,47 @@
 var search = function(nums, target) {
     let low = 0
     let high = nums.length-1
-        while (high > low){
+        while (high >= low){
             let mid = Math.floor((low + high) /2)
-            if (target == nums[mid]){return mid}
-            if (target > nums[mid]){low = mid + 1} 
-            if (target < nums[mid]){high = mid - 1}
+            if (nums[mid] === target){return mid}
+            if (nums[mid] > target){high = mid - 1}
+            if (nums[mid] < target){low = mid + 1} 
         }
     return -1
     };
+
+// ok too:
+var search = function(nums, target) {
+    let low = 0
+    let high = nums.length - 1
+    while (high >= low) {
+      const mid = Math.floor((low + high) / 2)
+      if (nums[mid] === target) {return mid}
+      if (nums[mid] > target) {high = mid - 1} 
+      if (nums[mid] < target) {low = mid + 1}
+    }
+    return -1
+  }
+
+// also ok:
+
+var search = function(nums, target) {
+    let low = 0
+    let high = nums.length-1
+        while (high > low){
+            let mid = Math.ceil((low + high) /2)
+            if (nums[mid] === target){return mid}
+            if (nums[mid] > target){high = mid - 1}
+            if (nums[mid] < target ){low = mid} 
+        }
+    return -1
+    };
+
+
+
+
+// +1 and -1 are good to consider:
+// https://stackoverflow.com/questions/27655955/why-does-binary-search-algorithm-use-floor-and-not-ceiling-not-in-an-half-open
 
 // why must add 1?
 // https://stackoverflow.com/questions/47256647/binary-search-python-why-do-we-use-mid-1-or-mid-1
