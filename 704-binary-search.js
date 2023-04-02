@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/binary-search/description/
+
 /**
  * @param {number[]} nums
  * @param {number} target
@@ -41,8 +43,6 @@ var search = function(nums, target) {
         }
     return -1
     };
-
-
 
 
 // +1 and -1 are good to consider:
