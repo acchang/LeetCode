@@ -5,13 +5,15 @@
  * @return {number[]}
  */
 var successfulPairs = function(spells, potions, success) {
-    sort potions and multiply until under success?
-    
-    if a spell and potion pair is successful, then the spell and all stronger potions will be successful too.
-
-     for each spell, we need to find the potion with the least strength that will form a successful pair.
-
-We can efficiently do this by sorting the potions based on strength and using binary search.
-
-
+    let answer = []
+    for (element of spells){
+        let left = potions[0]
+        let right = potions[length-1]
+            while right > left {
+            let mid = Math.floor(right-left/2)
+            if (mid * element === success){answer.push(potions[length]-mid)}
+            // binary search until found
+            }
+   } 
+return answer
 };
