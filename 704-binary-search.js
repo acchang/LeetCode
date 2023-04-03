@@ -68,6 +68,7 @@ Array = [8, 9,   11, 13]; target = 10
 */
 
 // why doesn't this break out? How did target get redefined?
+// It got redefined bc it's the next test, dummy. still need to do +1/-1 on the high and lows.
 
 var search = function(nums, target) {
     let low = 0
