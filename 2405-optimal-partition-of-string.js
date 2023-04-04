@@ -9,18 +9,14 @@ var partitionString = function(s) {
     while (right<s.length){
         if ( checkUnique(s.slice(left, right)) ){right++}
         if ( !checkUnique(s.slice(left, right))){
-            console.log(left, right)
-            console.log(s.slice(left, right));
             counter++
             left = right -1
-            console.log(left, right)
-            console.log(s.slice(left, right));
         }
 }
 return counter + 1
 };
 
-const checkUnique = (str) => { 
+function checkUnique(str) { 
 	const list = new Set(); 
 	for (const character of str.split("")) { 
 		list.add(character); 
