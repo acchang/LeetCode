@@ -3,23 +3,27 @@
  * @return {number}
  */
 var partitionString = function(s) {
-//    try greedy approach, from left to right, extend as far as possible
-//    return min num of strings 
     let counter = 0
     let left = 0
     let right = 1
-    while (right<s.length+1){
-        if (s[left] != s[right]){right++}
-        if (s[left] == s[right]){
+    while (right<s.length){
+        if ( checkUnique(s.slice(left, right)) ){right++}
+        if ( !checkUnique(s.slice(left, right))){
             console.log(left, right)
-            console.log(s.slice(left, right), s);
+            console.log(s.slice(left, right));
             counter++
-            left = right
+            left = right -1
             console.log(left, right)
-            right = ++right
-            console.log(left, right)
+            console.log(s.slice(left, right));
         }
 }
-return counter
-
+return counter + 1
 };
+
+const checkUnique = (str) => { 
+	const list = new Set(); 
+	for (const character of str.split("")) { 
+		list.add(character); 
+	} 
+	return str.length === list.size; 
+}; 
