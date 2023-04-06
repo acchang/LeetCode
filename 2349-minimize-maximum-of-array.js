@@ -8,15 +8,28 @@ var minimizeArrayValue = function(nums) {
     for (let i=0; i<nums.length; i++){
         prefixSum += nums[i]
         answer = Math.max(answer, Math.ceil(prefixSum / (i + 1)))
-    }
-    return answer
-};
+    }gi
+return answer
+}
 
-3 7 1 6
+// explanation:
+//https://leetcode.com/problems/minimize-maximum-of-array/solutions/3381500/very-easy-solution-100-explained-o-n-javascript-python/
 
+/*
+tested: 3716
 
-
-
+@3
+PFS = 3
+A = (0 or 3/1) => 3
+@7
+PFS = 10
+A = (3, 10/2 ) => 5
+@1
+PFS = 11
+A = (5, 11/3) => 5
+@6
+PFS = 17
+A = (5, 16/4) => 5
 
 Perform a binary search over the minimum value that can be achieved for the maximum number of the array.
 In each binary search iteration, iterate through the array backwards, greedily decreasing the current element until it is within the limit.
