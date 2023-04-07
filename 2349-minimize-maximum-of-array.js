@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/minimize-maximum-of-array/description/
+
 /**
  * @param {number[]} nums
  * @return {number}
@@ -12,8 +14,27 @@ var minimizeArrayValue = function(nums) {
 return answer
 }
 
-// explanation:
-//https://leetcode.com/problems/minimize-maximum-of-array/solutions/3381500/very-easy-solution-100-explained-o-n-javascript-python/
+/* Return the minimum possible value of the maximum integer of nums after performing any number of operations.
+
+minimum possible value means you average things out
+maximum integer of nums means the greatest between average of each pair
+
+From discussion -- 
+
+"Here's one way to interpret the goal: the only operation that we can run on the array transfers a unit toward elements on the left without affecting the overall sum. If you think about each array entry as a pile of rocks, the only allowed operation is to take a rock from one pile and move it to the pile on its left. The goal of the problem is to rearrange the rocks by applying this operation as many times as you want to make it so that the tallest pile is as low as possible."
+
+Imagine having two number 5 10 . We need to decrease one and increase other, how would we minimize the maximum number among them? By Evenly distributing them! We can then take the ceiling of their average (10+5)/2 = 7.5 = 8 .
+
+If there are three numbers, we need to take average of all of them and update our ans if it's bigger than the previously achieved answer, same for the whole array.
+
+Take a prefix sum variable, an ans variable, iterate through the array from 1st index, keep finding the ceiling of average until current iteration and update the answer as ans = max(ans, (total+i)/(i+1)).
+
+To summarize, we are evenly distributing all the elements so as to make the maximum[ceil of average] among them minimum, and keeping track of the maximum value as answer to return it.
+
+
+
+explanation:
+https://leetcode.com/problems/minimize-maximum-of-array/solutions/3381500/very-easy-solution-100-explained-o-n-javascript-python/
 
 /*
 tested: 3716
