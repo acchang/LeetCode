@@ -5,6 +5,7 @@
  * @return {string}
  */
 
+// use stack to pass over only once, "*" means you pop off the latest that was moved to stack
 
 var removeStars = function(s) {
     const stackArr = [];
@@ -17,6 +18,13 @@ var removeStars = function(s) {
     }
     return stackArr.join("");
 };
+
+// new stack strategy using reverse
+// abc*def*g*
+// loop from end, when *, shift and cut the one before, push otherwise 
+
+
+
 
 
 
