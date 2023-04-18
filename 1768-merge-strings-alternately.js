@@ -17,3 +17,19 @@ var mergeAlternately = function(word1, word2) {
     return answer + remainder
 };
 
+// also: slightly faster
+
+var mergeAlternately = function(word1, word2) {
+    let answer = ""
+    let m = word1.length
+    let n = word2.length
+    for (let i=0; i<Math.max(m, n); i++){
+        if (i<m)(answer+=word1[i])
+        if (i<n)(answer+=word2[i])
+    }
+    return answer
+};
+
+
+
+
