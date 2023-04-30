@@ -33,17 +33,25 @@ var isSymmetric = function(root) {
 
 var isSymmetric = function (root) {
     if (root == null) return true;
+    // if no root, return true
     let queue = [root.left, root.right];
+    // take the children of root
     while (queue.length > 0) {
+    // this stops when nothing is in queue
         let leftNode = queue.shift();
+    // remove from the queue
         let rightNode = queue.shift();
+    // remove
         if (leftNode == null && rightNode == null) continue;
+    // if same ok
         if (leftNode == null ||
             rightNode == null ||
             leftNode.val !== rightNode.val) {
             return false;
         }
+    // if one is null but both uneven, return false
         queue.push(leftNode.left, rightNode.right);
+    // take descendants of each and push again
         queue.push(leftNode.right, rightNode.left);
     }
     return true;
