@@ -9,7 +9,7 @@ var average = function(salary) {
     return (salary.reduce((a,b) => a+b))/salary.length
 };
 
-// an alt that doesn't use sort but is not faster. Just finds the max and min in O(n), subtracts them and adds the rest
+// an alt that doesn't use sort but is not faster. Just finds the max and min in O(n), subtracts them and adds the rest. This is also the book solution.
 
 var average = function(salary) {
     let val=0;
