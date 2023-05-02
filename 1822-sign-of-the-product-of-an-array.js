@@ -31,7 +31,7 @@ var signFunc = function(x){
     return x % 2 == 0 ? 1 : -1
 };
 
-// or
+// or this, but still not as fast as first
 
 var arraySign = function(nums) {
     let negs = 0
@@ -45,4 +45,3 @@ var arraySign = function(nums) {
 var signFunc = function(x){
     return x % 2 == 0 ? 1 : -1
 };
-
