@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/sign-of-the-product-of-an-array/submissions/942972647/
+
 /**
  * @param {number[]} nums
  * @return {number}
@@ -14,13 +16,28 @@ var signFunc = function(x){
     else if (x == 0){return 0}
 };
 
-// faster, per "book" solution
+// faster, per "book" solution, but first still the best.
 
 var arraySign = function(nums) {
     let negs = 0
+    if (nums.includes(0)){return 0}
     for (num of nums){
         if (num<0){negs++}
-        else if (num == 0){return 0}
+    }
+    return signFunc(negs)
+};
+
+var signFunc = function(x){
+    return x % 2 == 0 ? 1 : -1
+};
+
+// or
+
+var arraySign = function(nums) {
+    let negs = 0
+    if (nums.includes(0)){return 0}
+    for (num of nums){
+        if (num<0){negs++}
     }
     return signFunc(negs)
 };
