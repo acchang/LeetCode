@@ -28,27 +28,26 @@ var findDifference = function(nums1, nums2) {
 
 
 // alt solution avoids using num and has, creates one long for loop, accounts for undefined.
+// slower but less memory.
 
 function findDifference(nums1, nums2){
     const len = Math.max(nums1.length, nums2.length)
-    let ans1 = []
-    let ans2 = []
+    let ans1 = new Set()
+    let ans2 = new Set()
     for(let i = 0; i < len; i++){
         if(nums1[i] !== undefined){
             if(!nums2.includes(nums1[i])){
-                ans1.push(nums1[i])
+                ans1.add(nums1[i])
             }
         }
         if(nums2[i] !== undefined){
             if(!nums1.includes(nums2[i])){
-                ans2.push(nums2[i])
+                ans2.add(nums2[i])
             }
         }
     }
-    let set1 = new Set(ans1);
-    let set2 = new Set(ans2);
 
-    return [Array.from(set1), Array.from(set2)]
+    return [Array.from(ans1), Array.from(ans2)]
 };
 
 // or, this deletes:
