@@ -15,4 +15,6 @@ var maxVowels = function(s, k) {
     counter = 0
     }
     return max
-};gi
+};
+
+// keep track of changes in the window to save on memory
