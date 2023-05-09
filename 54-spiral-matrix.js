@@ -1,4 +1,5 @@
 // inspired by https://www.youtube.com/watch?v=BJnMZNwUk1M
+// uses pointers and update; python solution.
 
 /**
  * @param {number[][]} matrix
