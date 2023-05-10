@@ -1,10 +1,13 @@
-// inspired by https://www.youtube.com/watch?v=BJnMZNwUk1M
-// uses pointers and update; python solution.
-
 /**
  * @param {number[][]} matrix
  * @return {number[]}
  */
+
+// https://leetcode.com/problems/spiral-matrix/
+// inspired by https://www.youtube.com/watch?v=BJnMZNwUk1M
+// uses pointers and update; python solution.
+
+
 var spiralOrder = function(matrix) {
     let output = [];
     let left = 0, right = matrix[0].length, top = 0, bottom = matrix.length;
