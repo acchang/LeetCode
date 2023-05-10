@@ -18,6 +18,8 @@ var spiralOrder = function(matrix) {
 // right column
         for (let j=top; j<bottom;j++){output.push(matrix[j][right-1])}
         right--
+// need this for a case like [[1,2,3,4],[5,6,7,8],[9,10,11,12]]
+// it will output a repeat: [1,2,3,4,8,12,11,10,9,5,6,7,6]
         if (left>=right || top>=bottom){break} 
 // bottom row
         for (let k=right-1; k>left-1; k--){output.push(matrix[bottom-1][k])}
