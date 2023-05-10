@@ -19,6 +19,9 @@ var generateMatrix = function(n) {
 // right column
         for (let j=top; j<bottom;j++){output[j].splice(right-1,1,counter); counter++}
         right--
+
+// no need for `if (left>=right || top>=bottom){break}` bc I'm not creating a single array, I'm replacing elements in a matrix
+
 // bottom row
         for (let k=right-1; k>left-1; k--){(output[bottom-1]).splice(k,1,counter); counter++}
         bottom--
