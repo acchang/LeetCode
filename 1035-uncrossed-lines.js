@@ -1,6 +1,8 @@
 // https://leetcode.com/problems/uncrossed-lines/submissions/948430189/
 // Just repurposed solution for 1143
 // https://www.youtube.com/watch?v=4w7M2EHfvpo
+// also look: https://www.youtube.com/watch?v=ASoaQq66foQ
+
 
 /**
  * @param {number[]} nums1
