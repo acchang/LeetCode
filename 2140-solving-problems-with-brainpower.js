@@ -23,35 +23,20 @@ var mostPoints = function(questions) {
 };
 
 // recursive solution:
+// 7% time, 30% memory
 
-/**
- * @param {number[][]} questions
- * @return {number}
- */
 var mostPoints = function(questions) {
     let dp = {}
     function dfs(i){
-        if (i>questions.length){return 0}
+        if (i >= questions.length) {return 0;}
+        // needs >= and not > bc dfs will be (i+1) and i=questions.length will also be undefined
         if (dp[i]){return dp[i]}
-        dp[i] = Math.max(
-            dfs(i+1), 
-            questions[i][0] + dfs(i + 1 + questions[i][1])  )
-        return dp[i]
-    }
-    return dfs(0)
-};
-
-
-var mostPoints = function(questions) {
-    // let map = new Map();
-    let dp = {}
-    function dfs(i){
-        if (i >= questions.length) {return 0;}          
-        // if (map.has(i)){return map.get(i)}
-        if (dp[i]){return dp[i]} else {dp[i] = Math.max(dfs(i + 1), questions[i][0] + dfs(i + questions[i][1] + 1));}
-        // let res = Math.max(dfs(i + 1), questions[i][0] + dfs(i + questions[i][1] + 1));
-        // map.set(i, res);
+        // if dp[i] exists, no need to calculate, faster
+        dp[i] = Math.max(dfs(i + 1), questions[i][0] + dfs(i + questions[i][1] + 1));
+        // is the current plus whatever follows or the next one greater? follows down the line
+        // dp[i] -- do not use `let`
         return dp[i]
     }
     return dfs(0);
 }
+
