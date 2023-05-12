@@ -1,15 +1,8 @@
-// inspired by https://www.youtube.com/watch?v=D7TD_ArkfkA
-
-/**
- * @param {number[][]} questions
- * @return {number}
- */
 /**
  * @param {number[][]} questions
  * @return {number}
  */
 var mostPoints = function(questions) {
-    console.log(questions)
     let dp = {}
     let addOn = 0
     let qBefore = 0
