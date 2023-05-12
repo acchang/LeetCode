@@ -21,3 +21,37 @@ var mostPoints = function(questions) {
     return dp[0]
     // return the last pair
 };
+
+// recursive solution:
+
+/**
+ * @param {number[][]} questions
+ * @return {number}
+ */
+var mostPoints = function(questions) {
+    let dp = {}
+    function dfs(i){
+        if (i>questions.length){return 0}
+        if (dp[i]){return dp[i]}
+        dp[i] = Math.max(
+            dfs(i+1), 
+            questions[i][0] + dfs(i + 1 + questions[i][1])  )
+        return dp[i]
+    }
+    return dfs(0)
+};
+
+
+var mostPoints = function(questions) {
+    // let map = new Map();
+    let dp = {}
+    function dfs(i){
+        if (i >= questions.length) {return 0;}          
+        // if (map.has(i)){return map.get(i)}
+        if (dp[i]){return dp[i]} else {dp[i] = Math.max(dfs(i + 1), questions[i][0] + dfs(i + questions[i][1] + 1));}
+        // let res = Math.max(dfs(i + 1), questions[i][0] + dfs(i + questions[i][1] + 1));
+        // map.set(i, res);
+        return dp[i]
+    }
+    return dfs(0);
+}
