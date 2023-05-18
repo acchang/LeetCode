@@ -1,4 +1,4 @@
-// Using an Array 2
+// https://leetcode.com/problems/maximum-twin-sum-of-a-linked-list/description/
 
 /**
  * Definition for singly-linked list.
@@ -9,96 +9,57 @@
  */
 /**
  * @param {ListNode} head
- * @param {number} k
- * @return {ListNode}
+ * @return {number}
  */
-var swapNodes = function(head, k) {
-    let arr = [];
-    let cur = head;
-    while(cur) {arr.push(cur.val); cur = cur.next;
+
+// convert to array and figure out; 47% time, 20% memory
+
+var pairSum = function(head) {
+    let list = []
+    let cur = head
+    let ans = 0
+    let sum 
+    while(cur) {list.push(cur.val); cur = cur.next}
+    for (let i=0; i<list.length/2; i++){
+        sum = list[i]+list[list.length-1-i]
+        if (sum > ans){ans = sum}
     }
-// make linked list into array
-
-    let temp = arr[k-1];
-    arr[k-1] = arr[arr.length-k];
-    arr[arr.length-k] = temp;
-// switch in array
-
-    let rev = arr.reverse()
-    return rev.reduce((acc,cV) => new ListNode(cV, acc), null);
-// use reduce on reverse array to reconstruct linked list
-// start from null, first in reversed array is last in linked list.
-// accuulator becomes the this.next in the linked list.
-
+    return ans
 };
 
+// divide linked list into 2, reverse one, add and compare.
+// 78% fast; 34% memory
 
-// alt solutions
-
-var swapNodes = function(head, k) {
-    let curNode = head;
-    let endNode = head;
-    let count =1;
-// Traverse till the kth element.
-    while(count < k){
-        curNode = curNode.next;
-        count++;
+var pairSum = function(head) {
+    let prev = null;
+    let slow = head;
+    let fast = head;
+    while(fast !== null && fast.next !== null) {
+        prev = slow;
+        slow = slow.next;
+        fast = fast.next.next;
     }
-// store that value in frontNode
-    let frontNode = curNode;
-
-    curNode = curNode.next;
-// Continue traversing 'curNode' from the kth node to the end and endNode from the head, till curNode === null;
-    while(curNode){
-        curNode = curNode.next;
-        endNode = endNode.next;
+    prev.next = null
+    let firstCur = head
+    let secondCur = recursivelyReverseList(slow)
+    let ans = 0
+    let sum
+while (firstCur != null) {
+        sum = firstCur.val + secondCur.val
+        if (sum > ans){ans = sum};
+        firstCur = firstCur.next;
+        secondCur = secondCur.next;
     }
-// Now the firstNode will have the value in the kth position from the start and endNode will have the value in the kth position from the last
-    [frontNode.val, endNode.val] = [endNode.val, frontNode.val];
-    return head;
+    return ans
 };
 
-
-/// using an array 1
-
-const getAllData = (list) => { // linkedlist -> array
-    let res = [];
-    let current = list;
-    while (current) {
-        res.push(current.val);
-        current = current.next;
+function recursivelyReverseList(head) {
+    // base case
+    if (head === null || head.next === null) {
+        return head;
     }
-    return res;
-};
-
-const createL = (arr) => { // array -> linkedlist
-    let tmp, node = null;
-    let n = arr.length;
-    for (let i = n - 1; ~i; i--) {
-        if (!node) {
-            node = new ListNode(arr[i]);
-        } else {
-            tmp = new ListNode(arr[i]);
-            tmp.next = node;
-            node = tmp;
-        }
-    }
-    return node;
-};
-////////////////////////////////////////////////////////////////////////////
-
-const swapNodes = (head, k) => {
-    let a = getAllData(head);
-    let n = a.length;
-    let i = 0;
-    let j = n - 1;
-    while (i < k - 1) {
-        i++;
-        j--;
-    }
-    [a[i], a[j]] = [a[j], a[i]]; // swap
-    return createL(a);
-};
-
-
-
+    let reversedHead = recursivelyReverseList(head.next);
+    head.next.next = head;
+    head.next = null;
+    return reversedHead;
+}
