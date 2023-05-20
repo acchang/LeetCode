@@ -1,3 +1,8 @@
+
+
+
+// works but not fully understood:
+
 /**
  * @param {string[][]} equations
  * @param {number[]} values
@@ -11,16 +16,15 @@ var calcEquation = function(equations, values, queries) {
     for(let i = 0; i < equations.length; i++) {
         const [eqA, eqB] = equations[i];
         const val = values[i];
-        
-        map[eqA] || (map[eqA] = {});
-        map[eqB] || (map[eqB] = {});
-        
-        /* equation: ["x1", "x2"],  value: [3.0], then create a map map[x1][x2] = 3, map[x2][x1] = 1 / 3  */
+        map[eqA] ? map[eqA] : (map[eqA] = {});
+        map[eqB] ? map[eqB]: (map[eqB] = {});
+// if it doesn't exist, make it a {}
         map[eqA][eqB] = val;
+// assign the value to the part of the query
         map[eqB][eqA] = 1 / val;
     }
-    
     let visitedMap = Object.keys(map).reduce((r, eq) =>  ({ ...r, [eq]: false }), {});
+ console.log(visitedMap)
     let visitedMapCurrent = {};
     
     const output = [];
@@ -98,3 +102,4 @@ values   : [3.0, 4.0, 5.0, 6.0];
 queries. : [["x1","x5"],["x5","x2"],["x2","x4"],["x2","x2"],["x2","x9"],["x9","x9"]]
 
 */
+
