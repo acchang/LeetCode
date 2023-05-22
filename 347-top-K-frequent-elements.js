@@ -1,5 +1,7 @@
 // https://leetcode.com/problems/top-k-frequent-elements/
 
+// 30% runtime, 60% memory
+
 var topKFrequent = function(nums, k) {
     let hashobj = {};
     for (num of nums){
