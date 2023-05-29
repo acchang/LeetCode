@@ -5,6 +5,17 @@ var ParkingSystem = function(big, medium, small) {
   }
 
 
+// also:
+
+class ParkingSystem {
+    constructor(big, medium, small) {
+      this.big = big;
+      this.medium = medium;
+      this.small = small;
+    }
+
+// and:
+
 ParkingSystem.prototype.addCar = function(carType) {
 if(carType === 1){
     if(this.big > 0){
@@ -30,16 +41,7 @@ if(carType === 1){
 }
 };
 
-
-
-
--------
-class ParkingSystem {
-  constructor(big, medium, small) {
-    this.big = big;
-    this.medium = medium;
-    this.small = small;
-  }
+//or:
 
   addCar(carType) {
     if (
