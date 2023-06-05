@@ -45,6 +45,11 @@ var shortestPathBinaryMatrix = function(grid) {
 
 
 
+// BFS with queue:
+// https://www.youtube.com/watch?v=2arIqB3HtTU
+
+/*
+
 pop [ 0, 0, 1 ]
 now queue is 0 1  and  [ [ 0, 1, 2 ] ] - go right
 pop [ 0, 1, 2 ]  - at this point options are:
