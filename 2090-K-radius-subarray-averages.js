@@ -1,5 +1,10 @@
 // https://leetcode.com/problems/k-radius-subarray-averages/
 
+// sliding window technique, 75% time, 93% memory
+// prefix array would create array, add subequent number, which is O(n)
+// then it would subtact each previous number, which is O(n) too.
+// done
+
 /**
  * @param {number[]} nums
  * @param {number} k
