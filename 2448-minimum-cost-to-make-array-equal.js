@@ -1,3 +1,6 @@
+// https://leetcode.com/problems/minimum-cost-to-make-array-equal/editorial/
+// idea is not mine but execution is, prefix sum
+
 /**
  * @param {number[]} nums
  * @param {number[]} cost
@@ -9,13 +12,17 @@ var minCost = function(nums, cost) {
         numsCostObj[nums[i]] = cost[i]
     }
     let sortedNums = nums.sort((a,b) => a - b)
-    let answer = sortedNums.map((x,i) => (x-sortedNums[0])*numsCostObj[sortedNums[i]]).reduce((a,c) => a + c, 0)
+    let sortedCosts = Object.values(numsCostObj)
+    let temp = sortedNums.map((x,i) => (x-sortedNums[0])*numsCostObj[sortedNums[i]]).reduce((a,c) => a + c, 0)
+    let answer = temp
     for (let i=1; i<sortedNums.length;i++){
-            let multiplier = sortedNums[i]-sortedNums[i-1]
-            let left =             
-            left * multiplier positive
-            right * muliplier negative
-            let temp = answer + left + right
+            let delta = sortedNums[i]-sortedNums[i-1]
+            let left = (sortedCosts.slice(0,i).reduce((a,c) => a + c, 0)) * delta
+            console.log(i, left)
+            let right = (sortedCosts.slice(i).reduce((a,c) => a + c, 0)) * delta * -1
+            console.log(i, right)
+            temp = temp + left + right
+            console.log(temp, answer)
             if (temp < answer){answer = temp}
     }
     return answer
