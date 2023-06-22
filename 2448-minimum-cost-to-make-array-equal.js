@@ -40,6 +40,11 @@ now equalize to 2
 */
 
 // alt solution, no BigInt needed:
+// from https://leetcode.com/problems/minimum-cost-to-make-array-equal/solutions/3664704/js-o-n-log-n-solution-with-sorting/
+
+
+
+
 
 function minCost (nums, costs) {
     const n = nums.length
@@ -55,23 +60,19 @@ function minCost (nums, costs) {
 // bank is what it cost to move everthing by 1
 
     let minCost = 0
-
     const base = nums[nums.length - 1][0]
-
 // base is the biggest num
 
     for (let i = n - 1; i > -1; --i) {
         // console.log(i, nums[i][0], "minus", base, "times", nums[i][1])
         minCost += (nums[i][0] - base) * nums[i][1]
-        // console.log(minCost)
     }
+        console.log("minCost", minCost)
+
 // move backward through array nums, 
 // mincost is the current minus the smallest num times the cost of each
-
     let prevCost = minCost
-
 // mincCost is now prevCost
-
     let left = bank
 // bank is as if all nums needs to go up by 1
     let right = 0
@@ -79,26 +80,31 @@ function minCost (nums, costs) {
 
 console.log(nums)
     for (let i = n - 2; i > -1; --i) {
+        console.log("right:", right, "left:", left)
 // from the second lowest going up
         const prev = nums[i + 1]
-console.log("final loop", i, prev)
+console.log("loop", "at i=", i, "prev is", prev)
         right += prev[1]
         left -= prev[1]
-console.log("right:", right, "left:", left)
-// I don't need to sum again bc I got prefix and suffix at nums -1
-// whenever the nums change, then the delta changes
-/* at zero, the first layer is 20
-/* at 1, the first layer adds on 20 again, but 
+console.log("right", right, "plus prev[1] or", prev[1], "left:", left, "minus", prev[1])
 
-5 3 2  1
-1 3 14 2
+// instead of summing on both sides, realize that the total row is always the same number so you just need to add and subtract on each side of that number
 
-*/
         const delta = nums[i][0] - prev[0]
+        console.log("delta", delta, "times", right, "minus", left)
+        console.log("factor", delta * (right - left))
         prevCost += delta * (right - left)
-    
+        console.log(prevCost)
         if (prevCost < minCost) minCost = prevCost
     }
 
     return minCost
 }
+/*
+at
+[ [ 5, 1 ], [ 3, 3 ], [ 2, 14 ], [ 1, 2 ] ]
+start with left is 20, right is 0 
+at level 1, 2 is the main number, so left is 18 and right is 2
+delta is 1
+prevcost = 2-18 * delta = -16
+*/
