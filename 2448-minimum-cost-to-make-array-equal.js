@@ -1,6 +1,44 @@
 // https://leetcode.com/problems/minimum-cost-to-make-array-equal/editorial/
 // idea is not mine but execution is, prefix sum
 
+// BEST:
+
+var minCost = function(nums, cost) {
+    let numsCostLinked = []
+    for (let i=0; i<nums.length;i++){
+        let pair = []
+        pair.push(nums[i])
+        pair.push(cost[i])
+        numsCostLinked.push(pair)
+    }
+    numsCostLinked.sort((a,b) => a[0] - b[0])
+
+    let temp = numsCostLinked.map((x,i) => (x[0]-numsCostLinked[0][0])*numsCostLinked[i][1]).reduce((a,c) => a + c, 0)
+
+    let answer = temp
+
+    let sortedCosts = []
+    for (let i=0;i<numsCostLinked.length;i++){
+        sortedCosts.push(numsCostLinked[i][1])
+    }
+
+    let totalLine = sortedCosts.reduce((a,b) => a+b)
+    let left = 0
+    let right = totalLine
+
+    for (let i=1; i<numsCostLinked.length;i++){
+            let delta = numsCostLinked[i][0]-numsCostLinked[i-1][0]
+            left += sortedCosts[i-1]
+            right -= sortedCosts[i-1]
+            temp = delta * (left-right)+ temp
+            if (temp < answer){answer = temp}
+    }
+    return answer
+};
+
+
+// fails bc I use object:
+
 /**
  * @param {number[]} nums
  * @param {number[]} cost
@@ -38,6 +76,46 @@ now equalize to 2
 3 to go to 2 needs 1 unit * 3 cost = -3 + 12 sum = 9
 4th to got 2 need 1 unit * 1 cost = -1 + 9 sum = 8
 */
+
+// removed the object, made it a 2D array bc if nums repeat, using an object will eliminate repeats:
+
+var minCost = function(nums, cost) {
+    let numsCostLinked = []
+    for (let i=0; i<nums.length;i++){
+        let pair = []
+        pair.push(nums[i])
+        pair.push(cost[i])
+        numsCostLinked.push(pair)
+    }
+    numsCostLinked.sort((a,b) => a[0] - b[0])
+
+    let temp = numsCostLinked.map((x,i) => (x[0]-numsCostLinked[0][0])*numsCostLinked[i][1]).reduce((a,c) => a + c, 0)
+
+    let answer = temp
+
+    let sortedCosts = []
+    for (let i=0;i<numsCostLinked.length;i++){
+        sortedCosts.push(numsCostLinked[i][1])
+    }
+
+    for (let i=1; i<numsCostLinked.length;i++){
+            let delta = numsCostLinked[i][0]-numsCostLinked[i-1][0]
+            let left = sortedCosts.slice(0,i).reduce((a,c) => a + c, 0)
+            console.log(left)
+         
+            let right = sortedCosts.slice(i).reduce((a,c) => a + c, 0)
+            console.log(right)
+            
+            temp = delta*(left-right)+temp
+
+            console.log(i, temp)
+            if (temp < answer){answer = temp}
+    }
+    return answer
+};
+
+
+
 
 // alt solution, no BigInt needed:
 // from https://leetcode.com/problems/minimum-cost-to-make-array-equal/solutions/3664704/js-o-n-log-n-solution-with-sorting/
