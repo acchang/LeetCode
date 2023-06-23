@@ -1,6 +1,10 @@
 // https://leetcode.com/problems/minimum-cost-to-make-array-equal/editorial/
 // idea is not mine but execution is, prefix sum
 
+// some discussion:
+// https://discord.com/channels/735923219315425401/1084551836817698906/threads/1121237314283249695
+
+
 // BEST:
 
 var minCost = function(nums, cost) {
