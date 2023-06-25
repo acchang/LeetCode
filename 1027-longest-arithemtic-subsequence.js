@@ -12,11 +12,15 @@
 var longestArithSeqLength = function(nums) {
     let maxCount = 0
     const dp = new Array(nums.length).fill(0).map(ele => ele = {});
+// you will make a dp for every element in nums which will serve as an index for all the differences created for each number to the left of the current number
     for (let i=1; i<nums.length; i++){
         for (let j=0; j<i; j++){
             let diff = nums[j]-nums[i]
             if (dp[j][diff]) {dp[i][diff] = dp[j][diff]+1} else {dp[i][diff] = 2}
+// if in the jth entry of [dp], the key of diff has a value
+// put into [dp] in the ith place, the prior plus 1 or just 2
             if (dp[i][diff] > maxCount){maxCount=dp[i][diff]}
+// keep track and just update the maxCount
             }
     }
     return maxCount
