@@ -33,6 +33,69 @@ var longestArithSeqLength = function(nums) {
     return Math.max(...count)
 };
 
+--------
+
+// https://discord.com/channels/735923219315425401/1084551836817698906/threads/1122532164894986393
+
+var longestArithSeqLength = function(nums) {
+    const visitedMap = new Map();
+    for (let r=1; r<nums.length; r++){
+        for (let l=r-1; l>=0; l--){
+            let diff = nums[r]-nums[l]
+            let keyLeft = {[nums[l]]: diff}
+            let keyRight = {[nums[r]]: diff}
+            console.log(keyLeft, visitedMap.get(keyLeft), visitedMap)
+            if (!visitedMap.get(keyLeft)){
+                visitedMap.set((keyRight),2)
+                console.log(visitedMap.get(keyRight))
+                }
+            else if (visitedMap.get(keyLeft)){
+                visitedMap.set((keyRight), visitedMap.get(keyLeft)+1)
+
+            }
+        }
+    }
+    const count = [...visitedMap.values()];
+    return Math.max(...count)
+};
+
+
+
+/*
+3,6,9,12
+at r=6,l=3,d=3
+ck l/dif: does 3:3 exist in map? No so add r/dif 6:3 => 2
+at r=9,l=6,d=3
+ck l/dif: 6:3 exist? yes, so 6:3=>3
+
+
+
+    }
+    console.log(visitedMap)
+    let count = Object.values(visitedMap)
+    return Math.max(...count)
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 var longestArithSeqLength = function(nums) {
@@ -64,10 +127,13 @@ var longestArithSeqLength = function(nums) {
     for (let r=1; r<nums.length; r++){
         for (let l=r-1; l>=0; l--){
             let diff = nums[r]-nums[l]
-            if (!visitedMap.get(nums[l], diff)){visitedMap.set((nums[r],diff),2)}
-            else if (visitedMap.get(nums[l], diff)){
-                visitedMap.set(visitedMap.set((nums[r],diff),visitedMap.get(nums[l], diff)+1))}
+            let keyLeft = {[nums[l]]: diff}
+            let keyRight = {[nums[r]]: diff}
+            if (!VisitedMap[keyLeft]){visitedMap.set((keyRight),2)}
+            else if (VisitedMap[keyLeft]){
+                visitedMap.set((keyRight), visitedMap.get(keyLeft)+1)
             }
+        }
     }
     console.log(visitedMap)
     let count = Object.values(visitedMap)
