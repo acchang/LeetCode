@@ -9,8 +9,13 @@ var singleNumber = function(nums) {
     for (let num of nums){
         if (obj[num]){obj[num]+=1} else {obj[num]=1}
     }
-    console.log(obj)
     for (let i in obj){
         if (obj[i]===1){return i}
     }
 };
+
+
+/* 
+bit manipulation
+https://www.youtube.com/watch?v=jO7uGdvGGC4
+https://www.youtube.com/watch?v=cOFAmaMBVps
