@@ -1,4 +1,7 @@
 // this python explanation helped: https://www.youtube.com/watch?v=aYqYMIqZx5s
+// 51% runtime, 54% memory
+// https://leetcode.com/problems/minimum-size-subarray-sum/submissions/988199519/
+// 75 min
 
 /**
  * @param {number} target
