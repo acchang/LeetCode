@@ -8,7 +8,7 @@ var maxConsecutiveAnswers = function(answerKey, k) {
     for (let right=0; right<answerKey.length; right++){
       if (answerKey[right] === "T"){charCount++}
       while (charCount > k){
-        if(answerKey[left+1] == "T"){charCount--}
+        if(answerKey[left++] == "T"){charCount--}
       }
       if (right-left+1 > maxT){maxT=right-left+1}
     }
@@ -17,7 +17,7 @@ var maxConsecutiveAnswers = function(answerKey, k) {
     for (let right=0; right<answerKey.length; right++){
       if (answerKey[right] === "F"){charCount++}
       while (charCount > k){
-        if(answerKey[left+1] == "F"){charCount--}
+        if(answerKey[left++] == "F"){charCount--}
       }
       if (right-left+1 > maxF){maxF=right-left+1}
     }
