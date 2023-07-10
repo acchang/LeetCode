@@ -10,6 +10,7 @@ var putMarbles = function(weights, k) {
         cuts.push(weights[i]+weights[i+1])
     }
     cuts.sort((a,b) => a-b)
+    console.log(cuts)
     let minCuts = cuts.splice(0,k-1).reduce((a,cV)=> a + cV, 0)
     let maxCuts = cuts.splice(-k+1).reduce((a,cV)=> a + cV, 0)
     return maxCuts - minCuts
