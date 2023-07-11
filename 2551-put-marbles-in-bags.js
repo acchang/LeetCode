@@ -15,3 +15,4 @@ var putMarbles = function(weights, k) {
     let maxCuts = cuts.splice(-k+1).reduce((a,cV)=> a + cV, 0)
     return maxCuts - minCuts
 };
+
