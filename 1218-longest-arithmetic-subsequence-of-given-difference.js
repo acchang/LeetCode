@@ -17,11 +17,5 @@ var longestSubsequence = function(arr, difference) {
         }
         return answer
     };
-    
-    // one pass
-    // hash table?
-    // if diff positive, start from min, add, see if it exist
-    // if diff negative, start from max, add diff, see if exists
-    // this would be O(n)2
-    // so sort?
+
 };
