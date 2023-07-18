@@ -16,6 +16,4 @@ var longestSubsequence = function(arr, difference) {
         answer = Math.max(answer, dp[arr[i]])
         }
         return answer
-    };
-
 };
