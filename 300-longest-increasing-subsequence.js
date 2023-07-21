@@ -1,3 +1,6 @@
+// idea from https://www.youtube.com/watch?v=cjWnW0hdF1Y&t=10s
+
+
 /**
  * @param {number[]} nums
  * @return {number}
