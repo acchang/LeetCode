@@ -23,3 +23,23 @@ var PredictTheWinner = function(nums) {
 };
 
 
+
+var PredictTheWinner = function (nums) {
+    let n = nums.length;
+    let choose = true;
+
+    const validate = (nums, i, j, choose) => {
+        if (i > j) return 0;
+        // terminal condition
+
+        let res = 0;
+
+        // recursive if one way then the other
+        if (choose) res = Math.max(nums[i] + validate(nums, i + 1, j, false), nums[j] + validate(nums, i, j - 1, false));
+        else res = Math.min(-nums[i] + validate(nums, i + 1, j, true), -nums[j] + validate(nums, i, j - 1, true));
+        return res;
+    }
+
+    let maxScore = validate(nums, 0, n - 1, choose);
+    return maxScore >= 0;
+};
