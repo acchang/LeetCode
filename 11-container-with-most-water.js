@@ -20,21 +20,19 @@ var maxArea = function(height) {
 // better, faster:
 
 function maxArea(height){
-    let low = 0;
-    let high = height.length - 1;
+    let left = 0;
+    let right = height.length - 1;
     let ans = 0;
   
-    while (low <= high) {
-      const length = Math.min(height[low], height[high]);
-      const breadth = high - low;
+    while (left <= right) {
+      const length = Math.min(height[left], height[right]);
+      const breadth = right - left;
       const area = length * breadth;
   
       ans = Math.max(ans, area);
   
-      if (height[low] < height[high]) low++;
-      else high--;
+      if (height[left] < height[right]) left++;
+      else right--;
     }
     return ans;
   };
-
-  
