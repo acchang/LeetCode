@@ -18,6 +18,8 @@ var maxArea = function(height) {
 }
 
 // better, faster:
+// keep shifting inward from the lower side in hopes of a taller result
+// see: https://www.youtube.com/watch?v=UuiTKBwPgAo
 
 function maxArea(height){
     let left = 0;
