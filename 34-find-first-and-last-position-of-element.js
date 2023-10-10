@@ -55,6 +55,11 @@
  * @param {number} target
  * @return {number[]}
  */
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
 var searchRange = function(nums, target) {
     left = findLeft(nums, target)
     right = findRight(nums, target)
@@ -82,3 +87,14 @@ function findRight(nums, target){
     if (nums[r]==target){return r}
     else return -1
 }
+
+// the parts are:
+// l is the priority change when looking for left, when mid is less than target move up
+
+if (nums[mid]<target){l=mid+1}
+else {r=mid-1}
+
+// vs opposite
+
+if (nums[mid]>target){r=mid-1}
+else {l=mid+1}
