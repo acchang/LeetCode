@@ -1,3 +1,31 @@
+// done with the help of https://www.youtube.com/watch?v=jzZsG8n2R9A
+
+/**
+ * @param {number[]} nums
+ * @return {number[][]}
+ */
+var threeSum = function(nums) {
+    let ans = []
+    let numsSort = nums.sort((a,b) => a-b)
+    for (let i=0; i<numsSort.length; i++){
+        if (i>0 && numsSort[i] == numsSort[i-1]){continue}
+        let l = i+1, r = numsSort.length-1
+        while (l<r){
+            let curSum = numsSort[i] + numsSort[l] + numsSort[r]
+            if (curSum > 0){r--}
+            else if (curSum < 0){l++}
+            else {ans.push([numsSort[i], numsSort[l], numsSort[r]])
+            l++
+            while (numsSort[l] === numsSort[l+1] && l<r){l++} 
+            }
+        }
+    }
+    return ans
+};
+
+
+
+////////////
 function threeSum(nums) {
 	const results = []
 
