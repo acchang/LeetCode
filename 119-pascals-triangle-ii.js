@@ -21,9 +21,30 @@ var getRow = function(rowIndex) {
     return baseArray
 };
 
+// book solution:
 
+/**
+ * @param {number} rowIndex
+ * @return {number[]}
+ */
+var getRow = function(rowIndex) {
+    let row = [1];
 
+    for (let i = 0; i < rowIndex; i++) {
+        row = row.map((val, index) => 
+        (row[index - 1] || 0) + (row[index] || 0));
+       // for each entry in the array, add the one before to the current if it exists
+        console.log(i, row)
+// 0 [ 1 ]
+// 1 [ 1, 2 ]
+// 2 [ 1, 3, 3 ]
+        row.push(1);
+        // add a final 1
+    }
+    return row;    
+};
 
+// No need to build hashmap, too long
 
 /**
  * @param {number} rowIndex
