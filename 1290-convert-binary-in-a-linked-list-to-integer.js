@@ -46,3 +46,18 @@ var getDecimalValue = function(head) {
     return parseInt(bin, 2)
 };
 
+// a lot of the book solutions don't need to parseInt and calculate binary automatically
+
+function getDecimalValue(head: ListNode | null): number {
+    let cur = head; 
+    let dec= 0; 
+    while(cur){
+        dec +=cur.val;
+        dec*=2;
+        cur = cur.next 
+    }
+    
+    return dec/2;
+    }
+
+    
