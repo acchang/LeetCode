@@ -30,6 +30,11 @@ MyHashMap.prototype.remove = function(key) {
     
 };
 
+
+// look at https://www.youtube.com/watch?v=dHLbQiy2td8
+// also: https://www.youtube.com/watch?v=gvicrj31JOM
+
+
 /** 
  * Your MyHashMap object will be instantiated and called as such:
  * var obj = new MyHashMap()
