@@ -31,9 +31,39 @@ MyHashMap.prototype.remove = function(key) {
 };
 
 
-// look at https://www.youtube.com/watch?v=dHLbQiy2td8
+// from: https://www.youtube.com/watch?v=dHLbQiy2td8
 // also: https://www.youtube.com/watch?v=gvicrj31JOM
 
+
+var MyHashMap = function() {
+    this.hashMap = []
+};
+
+/** 
+ * @param {number} key 
+ * @param {number} value
+ * @return {void}
+ */
+MyHashMap.prototype.put = function(key, value) {
+    this.hashMap[key] = [key, value]
+};
+
+/** 
+ * @param {number} key
+ * @return {number}
+ */
+MyHashMap.prototype.get = function(key) {
+    console.log(this.hashMap)
+    return this.hashMap[key] ? this.hashMap[key][1] : -1
+};
+
+/** 
+ * @param {number} key
+ * @return {void}
+ */
+MyHashMap.prototype.remove = function(key) {
+    delete this.hashMap[key]    
+};
 
 /** 
  * Your MyHashMap object will be instantiated and called as such:
@@ -43,9 +73,9 @@ MyHashMap.prototype.remove = function(key) {
  * obj.remove(key)
  */
 
-
-// solution:
+// other solution, somewhat more complicated.
 // https://leetcode.com/problems/design-hashmap/solutions/4126935/easy-to-understand-beginner/?envType=daily-question&envId=2023-10-04
+// https://leetcode.com/problems/design-hashmap/solutions/4127606/beats-99-easy-implementation-using-array/
 
 class MyHashMap {
     constructor() {
