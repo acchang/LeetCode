@@ -66,3 +66,6 @@ ab
 b
 It doesn't get at "bb" when reducing from the front
 */
+
+// for dp:
+https://www.youtube.com/watch?v=UflHuQj6MVA
