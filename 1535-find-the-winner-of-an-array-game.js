@@ -16,3 +16,24 @@ var getWinner = function(arr, k) {
     return arr[0]
 };
 
+// better:
+
+/**
+ * @param {number[]} arr
+ * @param {number} k
+ * @return {number}
+ */
+var getWinner = function(arr, k) {
+    let maxElement = Math.max(...arr)
+    let curr = arr[0]
+    arr.shift()
+    let queue = arr
+    let winstreak = 0
+    while (queue){
+        let opponent = arr.shift()
+        if (curr > opponent){arr.push(opponent); winstreak++}
+        else {arr.push(curr); curr = opponent; winstreak = 1}
+        if (winstreak == k || curr == maxElement){return curr}
+    }
+};
+
