@@ -4,6 +4,39 @@
  * @return {number}
  */
 
+
+// done:
+
+var eliminateMaximum = function(dist, speed) {
+    let arrival = []
+    for (let i=0; i<dist.length; i++){
+        arrival.push(dist[i]/speed[i])
+    }
+    arrival.sort((a,b) => a-b)
+    let dead = 1
+    for (let j=1; j<arrival.length;j++){
+        if (arrival[j]<=[j]){break}
+        else dead++
+    }
+    return dead
+};
+
+// uses map but slower:
+
+var eliminateMaximum = function(dist, speed) {
+    let arrival = dist.map((e,index)=> e/speed[index]);
+    arrival.sort((a,b) => a-b)
+    let dead = 1
+    for (let j=1; j<arrival.length;j++){
+        if (arrival[j]<=[j]){break}
+        else dead++
+    }
+    return dead
+};
+
+
+
+
 // passes tests but eliminates monsters in order
 
 var eliminateMaximum = function(dist, speed) {
