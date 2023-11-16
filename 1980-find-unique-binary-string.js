@@ -10,21 +10,31 @@
  * @param {string[]} nums
  * @return {string}
  */
+/**
+ * @param {string[]} nums
+ * @return {string}
+ */
+function findDifferentBinaryString(nums) {
+    const n = nums[0].length
+    return backtrack("", nums, n)
+  }
+// starts here, with currentStr = ""
+
+// then it keeps building and testing, adding a "1" or "0"
 const backtrack = (currentStr, results, n) => {
     if (currentStr.length === n) {
-      if (!results.has(currentStr)) return currentStr
+      if (!results.includes(currentStr)) return currentStr
       return false
     }
     return backtrack(currentStr+"0", results, n) ||
       backtrack(currentStr+"1", results, n)
+// The OR function is a short-circuit OR evaluation - it returns the first element that is not false, or the last false element otherwise.
   }
   
-  function findDifferentBinaryString(nums) {
-    const n = nums[0].length
-    const results = new Set(nums)
-    return backtrack("", results, n)
-  }
+
   
+
+
 
 
 
