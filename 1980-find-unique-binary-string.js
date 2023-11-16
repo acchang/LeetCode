@@ -33,10 +33,7 @@ const backtrack = (currentStr, results, n) => {
   
 
   
-
-
-
-
+// new solutions: cantors diagonal
 
 var findDifferentBinaryString = function(nums) {
     // cantors goes through the array and takes the opposite each digit of the index of the number?
