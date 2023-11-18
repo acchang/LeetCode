@@ -23,7 +23,9 @@ var maxFrequency = function(nums, k) {
 };
 
 // instead of calculating the difference every time the pointers move and using slice and reduce, you can just add and subtract
-// gets hung up on 26/71
+// gets hung up on 57/71, time limit exceeded
+// I calculate total every time the for loop runs, may be too much
+// need to start loop with both right and left at 0 so that total grows every time.
 
 var maxFrequency = function(nums, k) {
     nums.sort((a,b)=>a-b)
@@ -33,8 +35,8 @@ var maxFrequency = function(nums, k) {
       let target = nums[right]
       let total = nums.slice(0, right).reduce((acc, cV)=>acc+cV, 0)
       while ( (((right-left)*target-total) > k) ){
-        left++
         total -= nums[left]
+        left++
       }
       if ((right-left+1) > ans){ans = right-left+1} 
   }
@@ -67,3 +69,19 @@ var maxFrequency = function(nums, k) {
     return ans;
 }
 
+// fixed my own, key is both pointers must start from 0 so I don't have to reduce
+
+var maxFrequency = function(nums, k) {
+    nums.sort((a,b)=>a-b)
+    let ans = 1
+    let total = 0
+    for (let left = 0, right=0; right<nums.length; right++){
+      total += nums[right]
+      while ( (((right-left+1)*nums[right]-total) > k) ){
+        total -= nums[left]
+        left++
+      }
+      if ((right-left+1) > ans){ans = right-left+1} 
+  }
+  return ans
+};
