@@ -29,3 +29,29 @@ var numSpecial = function(mat) {
     }
     return ans
 };
+
+
+// faster and slicker solution:
+
+
+var numSpecial = function(mat) {
+    function getColumnSum(colIdx) {
+        return mat.reduce((sum, row) => sum + row[colIdx], 0);
+    }
+    // helper function that reduces a column
+
+    let special = 0;
+    for (let row of mat) {
+    // go thru each row
+        if (row.reduce((acc, val) => acc + val, 0) === 1) {
+    // if row reduced is 1
+            const colIdx = row.indexOf(1);
+    // get the index of the 1
+            special += getColumnSum(colIdx) === 1;
+    // add to special if the sum of the column is 1
+        }
+    }
+
+    return special;    
+};
+
