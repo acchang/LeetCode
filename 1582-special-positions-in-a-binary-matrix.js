@@ -12,7 +12,7 @@ var numSpecial = function(mat) {
         row.push(mat[i].reduce((acc,cV) => acc + cV,0))
         }
 
-    for (let j=0;j<mat.length;j++){
+    for (let j=0;j<mat[0].length;j++){
         for (let k=0;k<mat.length;k++){
             columnParts.push(mat[k][j])
         }
@@ -20,9 +20,11 @@ var numSpecial = function(mat) {
         columnParts=[]
     }
     
+    console.log("row", row)
+    console.log("column", column)
+
     for (let l=0;l<mat.length;l++){
         for (let m=0;m<mat.length;m++){
-            console.log(mat[l][m])
             if (mat[l][m]==1 && row[l]==1 && column[m]==1){
                 ans++
             }
@@ -30,3 +32,9 @@ var numSpecial = function(mat) {
     }
     return ans
 };
+
+// [0,0,0,0,0,1,0,0]
+// [0,0,0,0,1,0,0,1]
+// [0,0,0,0,1,0,0,0]
+// [1,0,0,0,1,0,0,0]
+// [0,0,1,1,0,0,0,0]
