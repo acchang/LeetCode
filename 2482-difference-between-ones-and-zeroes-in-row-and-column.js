@@ -33,3 +33,21 @@ var onesMinusZeros = function(grid) {
     return diff
 
 };
+
+// not my solution, slower:
+
+var onesMinusZeros = function(grid) {
+    const m = grid.length;
+    const n = grid[0].length;
+    const res = Array.from({ length: m }, () => Array(n).fill(0));
+    const onesRow = grid.map(row => row.filter(val => val === 1).length);
+    const onesCol = Array.from({ length: n }, (_, j) => grid.map(row => row[j]).filter(val => val === 1).length);
+
+    for (let i = 0; i < m; i++) {
+        for (let j = 0; j < n; j++) {
+            res[i][j] = onesRow[i] + onesCol[j] - (n - onesRow[i]) - (m - onesCol[j]);
+        }
+    }
+
+    return res;    
+};
