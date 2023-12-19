@@ -24,3 +24,23 @@ var imageSmoother = function(img) {
     }
     return smoothImg
 };
+
+////
+
+for (let i = 0; i < m; i++) {
+    for (let j = 0; j < n; j++) {
+        // Initialize the sum and count 
+        let sum = 0;
+        let count = 0;
+
+        // Iterate over all plausible nine indices.
+        for (let x = i - 1; x <= i + 1; x++) {
+            for (let y = j - 1; y <= j + 1; y++) {
+                // If the indices form valid neighbor
+                if (0 <= x && x < m && 0 <= y && y < n) {
+                    sum += img[x][y];
+                    count += 1;
+                }
+            }
+        }
+        
