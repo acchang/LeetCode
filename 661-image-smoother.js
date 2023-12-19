@@ -8,8 +8,11 @@ var imageSmoother = function(img) {
 
     for (let m=0; m<img.length;m++){
         for (let n=0; n<img[0].length;n++){
+// this puts each space in the matrix at the center
             let count = 0
             let total = 0
+// then we iterate through the surrounding spaces
+
             if (img[m-1][n-1]){total += img[m-1][n-1]; count++}
             if (img[m-1][n]){total += img[m-1][n]; count++}
             if (img[m-1][n+1]){total += img[m-1][n+1]; count++}
@@ -43,4 +46,4 @@ for (let i = 0; i < m; i++) {
                 }
             }
         }
-        
+
