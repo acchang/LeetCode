@@ -1,49 +1,34 @@
-/**
- * @param {number[][]} img
- * @return {number[][]}
- */
 var imageSmoother = function(img) {
     let smoothImgInner = new Array(img[0].length).fill(0)
     let smoothImg = new Array(img.length).fill(smoothImgInner)
 
-    for (let m=0; m<img.length;m++){
-        for (let n=0; n<img[0].length;n++){
-// this puts each space in the matrix at the center
-            let count = 0
+    for (let i=0; i<img.length ; i++){
+        for (let j=0; j <img[0].length; j++){
+// this puts each space in the matrix at the center, target=img[m][n]
             let total = 0
+            let count = 0
 // then we iterate through the surrounding spaces
+        // for (let x = n-1; x<n+1; x++){
+        //         for (let y = m-1; y<m+1; y++){
+        //             if (x>-1 && x<img[0].length && y>-1 && y<m.length){
+        //                 console.log(img[x][y])
+        //                 // total+=img[x][y]; count++
+        //             }
+        //         }
+        //     }
 
-            if (img[m-1][n-1]){total += img[m-1][n-1]; count++}
-            if (img[m-1][n]){total += img[m-1][n]; count++}
-            if (img[m-1][n+1]){total += img[m-1][n+1]; count++}
-            if (img[m][n-1]){total += img[m][n-1]; count++}
-            if (img[m][n+1]){total += img[m][n+1]; count++}
-            if (img[m+1][n-1]){total += [m+1][n-1]; count++}
-            if (img[m+1][n]){total += [m+1][n]; count++}
-            if (img[m+1][n+1]){total += [m+1][n+1]; count++}
-            smoothImg[m][n]=Math.floor(total/count)
-            // console.log(smoothImg)
+  for (let x = i - 1; x <= i + 1; x++) {
+        for (let y = j - 1; y <= j + 1; y++) {
+            // If the indices form valid neighbor
+            if (0 <= x && x < img.length && 0 <= y && y < img[0].length) {
+                total += img[x][y];
+                count +=1;
+                    }
+                }
+            }
+
+            smoothImg[i][]=Math.floor(total/count)
         }
     }
     return smoothImg
 };
-
-////
-
-for (let i = 0; i < m; i++) {
-    for (let j = 0; j < n; j++) {
-        // Initialize the sum and count 
-        let sum = 0;
-        let count = 0;
-
-        // Iterate over all plausible nine indices.
-        for (let x = i - 1; x <= i + 1; x++) {
-            for (let y = j - 1; y <= j + 1; y++) {
-                // If the indices form valid neighbor
-                if (0 <= x && x < m && 0 <= y && y < n) {
-                    sum += img[x][y];
-                    count += 1;
-                }
-            }
-        }
-
