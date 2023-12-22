@@ -32,6 +32,7 @@ var maxScore = function(s) {
     // top score is Zeroes on the Left PLUS Total Zeros minus Ones on the Left
     // OR Zeros(left)+Ones(total)-Ones(Left)
     // since Ones(total) is a constant, we maximize Zeros(left) minus Ones(left)
+    // ones on left will disappear from total
         if ( (zeroes-ones) > max){max= (zeroes-ones)}
     // you don't count last one bc you want a split of at least one
     }
