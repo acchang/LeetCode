@@ -28,10 +28,15 @@ var maxScore = function(s) {
     let max = -Infinity
     for (let i=0; i<s.length-1;i++){
         if (s[i] == 1){ones++} else zeroes++
-        console.log(s[i], zeroes, ones, zeroes-ones)
+    // you're counting ones as you go
+    // top score is Zeroes on the Left PLUS Total Zeros minus Ones on the Left
+    // OR Zeros(left)+Ones(total)-Ones(Left)
+    // since Ones(total) is a constant, we maximize Zeros(left) minus Ones(left)
         if ( (zeroes-ones) > max){max= (zeroes-ones)}
+    // you don't count last one bc you want a split of at least one
     }
     if (s[s.length-1] == 1){ones++}
+    // you add to ones if the last is 1
     return max + ones
 };
 
