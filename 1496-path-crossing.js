@@ -17,6 +17,7 @@ var isPathCrossing = function(path) {
 };
 
 // use hash, with "has"
+// still slower than my solution.
 
 var isPathCrossing = function(path) {
     let moves = {
@@ -27,11 +28,13 @@ var isPathCrossing = function(path) {
     };
 
     let visited = new Set();
+    // use Set bc collection of unique values, and "has" is quicker.
     visited.add("0,0");
     let x = 0;
     let y = 0;
 
     for (let c of path) {
+    // takes the character of the string and references it and takes guidance from it
         let curr = moves[c];
         let dx = curr[0]; 
         let dy = curr[1];
