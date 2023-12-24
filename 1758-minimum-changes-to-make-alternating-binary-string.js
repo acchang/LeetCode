@@ -20,3 +20,26 @@ var minOperations = function(s) {
     
     return Math.min(zeroCount, onesCount)
 };
+
+
+// one pass:
+
+
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var minOperations = function(s) {
+    let zeroCount = 0
+
+    let testEle
+    for (let i=0; i<s.length; i++){
+        if (i%2 == 0){testEle = 0} else {testEle = 1}
+        if (s[i] != testEle){zeroCount++}
+    }
+
+    let onesCount = s.length - zeroCount
+
+    return Math.min(zeroCount, onesCount)
+};
+
