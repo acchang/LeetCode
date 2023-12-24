@@ -22,7 +22,7 @@ var minOperations = function(s) {
 };
 
 
-// one pass:
+// one pass, superfast
 
 
 /**
@@ -38,8 +38,6 @@ var minOperations = function(s) {
         if (s[i] != testEle){zeroCount++}
     }
 
-    let onesCount = s.length - zeroCount
-
-    return Math.min(zeroCount, onesCount)
+    return Math.min(zeroCount, s.length - zeroCount)
 };
 
