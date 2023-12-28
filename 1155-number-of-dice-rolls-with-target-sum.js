@@ -9,10 +9,14 @@ var numRollsToTarget = function(n, k, target) {
     dp1[0] = 1;
 
     // Dynamic programming loop for each die
+    // n dice, k faces
     for (let i = 1; i <= n; ++i) {
-        let prev = dp1[0];  // Initialize the previous value for the first element
+        // for each of the dice
+        let prev = dp1[0];  // Initialize the previous value for the first element, prev starts at 1
         for (let j = 1; j <= target; ++j) {
+        // go up until the target
             dp2[j] = prev;  // Update dp2 based on the previous value
+        //
             prev = (prev + dp1[j]) % mod;  // Update prev for the next iteration
 
             // If the current sum has more faces than the number of faces on the die, adjust prev
