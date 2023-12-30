@@ -1,8 +1,12 @@
+// *** fails for ["abc","cba"] bc every equal with any number of operations!
+
 /**
  * @param {string[]} words
  * @return {boolean}
  */
+
 var makeEqual = function(words) {
+    if (words.length == 1 || words.every((cv) => cv == words[0])){return true}
     words.sort((a, b) => a.length - b.length);
     let missingLink
     if (words[words.length-1].length - words[0].length != 2){return false}
