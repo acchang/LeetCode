@@ -12,9 +12,9 @@ var makeEqual = function(words) {
         words[words.length-1] = words[words.length-1].substring(0,i-1)+words[words.length-1].substring(i+1)
         break
     }
-    const containsLetter = (letter) => currentValue < 40;
+
     for (let j=0; j<words[0].length; j++){
-        if words.every(words[0][j]){return false}
+        if (words.every((cv) => cv.includes(words[0][j])) == false){return false}
     }
     return true
 };
