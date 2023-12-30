@@ -29,12 +29,15 @@ var makeEqual = function(words) {
     let sum = 0;
 
     for (let i = 0; i < words.length; i++) {
+        // first loop through the entire array
         const word = words[i];
+        // define each word of array as word
         sum += word.length;
+        // add characters to sum
 
         for (let j = 0; j < word.length; j++) {
             const character = word[j];
-
+        // build your hashmap
             if (hashmap.has(character)) {
                 hashmap.set(character, hashmap.get(character) + 1);
             } else {
@@ -43,11 +46,13 @@ var makeEqual = function(words) {
         }
     }
     if (sum%(words.length)) return false;
+    // if the total number of characters is not a multiple of the array length, then false
 
     let output = true;
     hashmap.forEach((value) => {
         if (value%(words.length)) output = false;
     });
+    // do a foreach on the hashmap. If a value modulo is greater than 0, then it's true and output is false.
 
     return output;
 };
