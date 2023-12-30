@@ -1,3 +1,61 @@
+/**
+ * @param {string[]} words
+ * @return {boolean}
+ */
+
+var makeEqual = function(words) {
+    let dictionary = {}
+    let numberOfWords = words.length
+    const giantWord = words.join("")
+    for (let i=0; i<giantWord.length; i++){
+        if (dictionary[giantWord[i]]){dictionary[giantWord[i]]++} else {dictionary[giantWord[i]]=1}
+    }
+    let objValues = Object.values(dictionary)
+    for (val of objValues){
+        if (val%numberOfWords != 0){return false}
+    }
+    return true
+};
+
+
+// book solution, slightly better:
+
+/**
+ * @param {string[]} words
+ * @return {boolean}
+ */
+var makeEqual = function(words) {
+    const hashmap = new Map();
+    let sum = 0;
+
+    for (let i = 0; i < words.length; i++) {
+        const word = words[i];
+        sum += word.length;
+
+        for (let j = 0; j < word.length; j++) {
+            const character = word[j];
+
+            if (hashmap.has(character)) {
+                hashmap.set(character, hashmap.get(character) + 1);
+            } else {
+                hashmap.set(character, 1);
+            }
+        }
+    }
+    if (sum%(words.length)) return false;
+
+    let output = true;
+    hashmap.forEach((value) => {
+        if (value%(words.length)) output = false;
+    });
+
+    return output;
+};
+
+
+
+
+
 // *** fails for ["abc","cba"] bc every equal with any number of operations!
 
 /**
