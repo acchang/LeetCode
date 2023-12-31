@@ -38,6 +38,11 @@ var maxLengthBetweenEqualCharacters = function(s) {
 
 // hashmap method:
 
+// this section was a problem bc I did not use "get"
+        if (firstIndex.has(s[i])){
+            console.log("two", ans, i - firstIndex[s[i]] - 1);
+            ans = Math.max(ans, i - firstIndex[s[i]] - 1)} 
+
 
 /**
  * @param {string} s
@@ -47,12 +52,9 @@ var maxLengthBetweenEqualCharacters = function(s) {
     let ans = -1
     let firstIndex = new Map();
     for (let i=0; i<s.length; i++){
-        console.log(i, firstIndex)
         if (firstIndex.has(s[i])){
-            console.log("two", ans, i - firstIndex[s[i]] - 1);
-            ans = Math.max(ans, i - firstIndex[s[i]] - 1)} 
-        else {firstIndex.set([s[i]], i)}
-        console.log(i, firstIndex)
+            ans = Math.max(ans, i - firstIndex.get(s[i]) - 1)} 
+        else {firstIndex.set(s[i], i)}
     }
     return ans
 };
