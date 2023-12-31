@@ -19,7 +19,6 @@ var maxLengthBetweenEqualCharacters = function(s) {
 // no need to use a set, can just go backwards and use index of!
 // still slow, slightly faster -- 
 
-
 /**
  * @param {string} s
  * @return {number}
@@ -30,10 +29,7 @@ var maxLengthBetweenEqualCharacters = function(s) {
               let holder=s.indexOf(s[i])
               out=Math.max(out,i-(holder+1))
           }
-  
-    
-          return out
-      
+            return out    
   };
 
 // hashmap method:
@@ -51,6 +47,7 @@ var maxLengthBetweenEqualCharacters = function(s) {
 var maxLengthBetweenEqualCharacters = function(s) {
     let ans = -1
     let firstIndex = new Map();
+    // first Index never moves, never updates, just measures the distance from the current.
     for (let i=0; i<s.length; i++){
         if (firstIndex.has(s[i])){
             ans = Math.max(ans, i - firstIndex.get(s[i]) - 1)} 
