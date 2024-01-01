@@ -18,6 +18,7 @@ var findContentChildren = function(g, s) {
 // book solution
 // must sort ascending bc want smallest to satisfy minimal
 // increment with `contentChildren` to pick up from last satisfied
+// not much faster at 6.9%
 
 /**
  * @param {number[]} g
