@@ -36,3 +36,21 @@ var findContentChildren = function(g, s) {
     }
     return contentChildren
 };
+
+// also:
+
+/**
+ * @param {number[]} g
+ * @param {number[]} s
+ * @return {number}
+ */
+var findContentChildren = function(g, s) {
+    g.sort((a,b) => a-b);
+    s.sort((a,b) => a-b);
+    let j = 0, res = 0;
+    for (let num of s) {
+// go through num until it beats a greed, and then advance the total and the greed
+        if (num >= g[j]) res++, j++;
+    }
+    return res;
+};
