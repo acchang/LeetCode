@@ -14,3 +14,24 @@ var findContentChildren = function(g, s) {
     }
     return output
 };
+
+// book solution
+// must sort ascending bc want smallest to satisfy minimal
+// increment with `contentChildren` to pick up from last satisfied
+
+/**
+ * @param {number[]} g
+ * @param {number[]} s
+ * @return {number}
+ */
+var findContentChildren = function(g, s) {
+    let gSort = g.sort((a,b)=> a-b)
+    let sSort = s.sort((a,b)=> a-b)
+    let contentChildren = 0
+    let cookieIndex = 0
+    while (cookieIndex < s.length && contentChildren < g.length){
+        if (sSort[cookieIndex]>=gSort[contentChildren]){contentChildren++}
+        cookieIndex++
+    }
+    return contentChildren
+};
