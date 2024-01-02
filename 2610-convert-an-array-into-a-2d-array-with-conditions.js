@@ -16,13 +16,13 @@ var findMatrix = function(nums) {
         }
     let sortedNumCount = Object.entries(numCount).sort(([,a],[,b]) => b-a)
     console.log(sortedNumCount)
-    let ans = new Array(sortedNumCount[0][1]).fill([sortedNumCount[0][0]*1])
+    let firstArray = [sortedNumCount[0][0]]
+    let ans = new Array(sortedNumCount[0][1]).fill(firstArray)
     console.log(ans)
 
     for (let j=1; j<sortedNumCount.length; j++){
         for (let k=0; k<sortedNumCount[j][1]; k++){
-            ans[k].push(sortedNumCount[j][1])
-            console.log(k, ans[k])
+            console.log(k, "adds", sortedNumCount[j][0])
             console.log(ans)
         }
     }
