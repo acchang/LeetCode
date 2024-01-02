@@ -2,11 +2,6 @@
  * @param {number[]} nums
  * @return {number[][]}
  */
-
-/**
- * @param {number[]} nums
- * @return {number[][]}
- */
 var findMatrix = function(nums) {
     let numCount = {}
     for (let i=0; i<nums.length; i++){
