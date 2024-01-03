@@ -1,3 +1,42 @@
+
+// https://leetcode.com/problems/convert-an-array-into-a-2d-array-with-conditions/?envType=daily-question&envId=2024-01-02
+
+// others' answer taken from:
+// https://leetcode.com/problems/convert-an-array-into-a-2d-array-with-conditions/editorial/?envType=daily-question&envId=2024-01-02
+
+// fastest, uses frequency counter solution from editorial
+
+
+/**
+ * @param {number[]} nums
+ * @return {number[][]}
+ */
+var findMatrix = function(nums) {
+    const frequency = []
+    for(let index=0; index<=nums.length+1; index++)
+        frequency.push(0);
+    // push 0 into the array as many times as length of nums + 1
+    // the array is as long as nums bc the components never go longer than the length
+    // 1 <= nums[i] <= nums.length
+
+    const result = [];
+
+    for(let num of nums){
+        if(frequency[num] >= result.length) 
+    // for each num, if that num in frequency is greater than result.length
+            result.push([]);
+    // push a new subarray into result, increasing result.length
+            result[frequency[num]].push(num);
+    // push the current num into the appropriate subarray for its frequency
+            frequency[num]++
+    // and update frequency 
+    }
+    return result;
+};
+
+
+
+
 /**
  * @param {number[]} nums
  * @return {number[][]}
