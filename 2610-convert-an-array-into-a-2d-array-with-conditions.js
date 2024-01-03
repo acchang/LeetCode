@@ -22,9 +22,31 @@ var findMatrix = function(nums) {
     return ans
 };
 
+// book answer, a little faster at 38%
+
+/**
+ * @param {number[]} nums
+ * @return {number[][]}
+ */
+var findMatrix = function(nums) {
+    const res = [],
+        freq = {}
+    for (let i = 0; i < nums.length; i++) {
+        const n = nums[i],
+            numCount = (freq[n] || 0) + 1
+        freq[n] = numCount
+        if (!res[numCount - 1]) res[numCount - 1] = [n]
+        else res[numCount - 1].push(n)        
+    }
+    return res
+};
 
 
-// QUESTIONS:
+
+// This one doesn't work bc of the issue with fill explained here:
+// https://discord.com/channels/735923219315425401/1191586410172534824
+// https://stackoverflow.com/questions/41121982/strange-behavior-of-an-array-filled-by-array-prototype-fill
+
 var findMatrix = function(nums) {
     // iterate and find number of instances
     // pull out everything that shows once
