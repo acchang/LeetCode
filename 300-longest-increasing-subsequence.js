@@ -1,3 +1,19 @@
+
+// New daily Q 1/4: https://www.youtube.com/watch?v=IftXURT0kq4
+
+const lengthOfLIS = (nums) => {
+	let dp = new Array(nums.length).fill(1);
+	let longest = 1;
+	for (let i = 1; i < nums.length; i++) {
+		for (let j = i; j >=0 ; j--) {
+			if (nums[i] > nums[j]) {
+				dp[i] = Math.max(dp[i], dp[j]+1);
+			}
+		}
+	}
+	return Math.max(...dp)
+}
+
 // idea from https://www.youtube.com/watch?v=cjWnW0hdF1Y&t=10s
 
 /**
