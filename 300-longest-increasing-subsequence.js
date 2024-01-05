@@ -3,7 +3,6 @@
 
 const lengthOfLIS = (nums) => {
 	let dp = new Array(nums.length).fill(1);
-	let longest = 1;
 	for (let i = 1; i < nums.length; i++) {
 		for (let j = i; j >=0 ; j--) {
 			if (nums[i] > nums[j]) {
