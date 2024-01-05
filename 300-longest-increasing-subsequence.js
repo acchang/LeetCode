@@ -31,9 +31,12 @@ const lengthOfLIS = (nums) => {
 const lengthOfLIS = (nums) => {
 	let dp = new Array(nums.length).fill(1);
 	for (let i = nums.length-2; i > -1; i--) {
+    // start from second to last, if numbers rightward are ascending, you add them to signify the length of the ascending subsequence starting there.
 		for (let j = i+1; j <nums.length ; j++) {
 			if (nums[j] > nums[i]) {
 				dp[i] = Math.max(dp[i], dp[j]+1);
+    // take the higher of the current or the sequence that ends with the rightward number.
+    // the current updates for each rightward number it encounters, which is why it is not always just 1
 			}
 		}
 	}
