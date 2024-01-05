@@ -13,6 +13,36 @@ const lengthOfLIS = (nums) => {
 	return Math.max(...dp)
 }
 
+
+const lengthOfLIS = (nums) => {
+	let dp = new Array(nums.length).fill(1);
+	for (let i = nums.length-2; i > -1; i--) {
+		for (let j = nums.length-1; j <i ; j++) {
+			if (nums[j] > nums[i]) {
+				dp[i] = Math.max(dp[i], dp[j]+1);
+			}
+		}
+	}
+	return Math.max(...dp)
+}
+
+// 1/4/23 also from https://www.youtube.com/watch?v=cjWnW0hdF1Y&t=10s
+
+const lengthOfLIS = (nums) => {
+	let dp = new Array(nums.length).fill(1);
+	for (let i = nums.length-2; i > -1; i--) {
+		for (let j = i+1; j <nums.length ; j++) {
+			if (nums[j] > nums[i]) {
+				dp[i] = Math.max(dp[i], dp[j]+1);
+			}
+		}
+	}
+	return Math.max(...dp)
+}
+
+
+
+
 // idea from https://www.youtube.com/watch?v=cjWnW0hdF1Y&t=10s
 
 /**
