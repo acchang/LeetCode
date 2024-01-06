@@ -1,3 +1,9 @@
+// https://leetcode.com/problems/number-of-dice-rolls-with-target-sum/description/?envType=daily-question&envId=2023-12-26
+
+// https://www.youtube.com/watch?v=sqgpQP4_tTY
+
+// good explanation: https://www.youtube.com/watch?v=hfUxjdjVQN4
+
 var numRollsToTarget = function(n, k, target) {
     const mod = 10**9 + 7;
 
