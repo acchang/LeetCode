@@ -1,12 +1,83 @@
 // https://leetcode.com/problems/number-of-dice-rolls-with-target-sum/description/?envType=daily-question&envId=2023-12-26
 
-// https://www.youtube.com/watch?v=sqgpQP4_tTY
 
-// good explanation: https://www.youtube.com/watch?v=hfUxjdjVQN4
 
-// https://leetcode.com/problems/number-of-dice-rolls-with-target-sum/solutions/4274303/javascript-1155-number-of-dice-rolls-with-target-sum/?envType=daily-question&envId=2023-12-26
+
+// Memoized -- top down approach
+// start with n = n and reduce until n=0
+
+function numRollsToTarget(n, k, target) {
+    MOD = 10**9 + 7
+    cache = {}
+    
+      function helper(n, t){
+          if (n == 0) {
+            return t == 0 ?  1 : 0}
+          if (cache[(n, t)]){
+            console.log("n",n, "t", t, "together", (n, t))
+            console.log(cache)
+            return cache[(n, t)]}
+        
+          let count = 0
+          for (let i = 1; i<=k; i++){
+              count = (count + helper(n-1, t-i)) % MOD
+          }
+        // console.log("n", n, "t", t, cache)
+        cache[(n, t)] = count
+        return count
+      }
+      return helper(n, target)
+  };
+
+console.log(numRollsToTarget(5, 6, 7))
+
+// why does this simple memoization only show the t and not the n as part of the key?
+// below memoized, it works with map but when using object it's too slow.
+// from: https://leetcode.com/problems/number-of-dice-rolls-with-target-sum/solutions/773197/javascript-solution-top-down-with-memoization-and-bottom-up-approach-dp/?envType=daily-question&envId=2023-12-26
+
+
+function numRollsToTarget(n, k, target) {
+    MOD = 10**9 + 7
+    const cache = new Map()
+    
+      function helper(n, t){
+          const key = `${n}#${t}`;
+
+          if (n == 0) {
+            return t == 0 ?  1 : 0}
+          if (cache.has(key)){
+            return cache.get(key)}
+        
+          let count = 0
+          for (let i = 1; i<=k; i++){
+              count = (count + helper(n-1, t-i)) % MOD
+          }
+        cache.set(key,count)
+        return count
+      }
+      return helper(n, target)
+  };
+
+
+
+
+
+
+
+
+
+// Many stepped solution https://leetcode.com/problems/number-of-dice-rolls-with-target-sum/solutions/4274303/javascript-1155-number-of-dice-rolls-with-target-sum/?envType=daily-question&envId=2023-12-26
+
+
+
+
+
+// Monu: https://www.youtube.com/watch?v=sqgpQP4_tTY
+
+// Neetcode: https://www.youtube.com/watch?v=hfUxjdjVQN4
 
 // this works but it's hard for me to conceptualize the recursion
+// use an object and an array: https://discord.com/channels/735923219315425401/1193386012588638229
 
 var numRollsToTarget = function (n, k, target) {
     if (n > target) return 0;
