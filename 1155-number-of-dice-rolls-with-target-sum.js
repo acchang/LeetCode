@@ -1,5 +1,10 @@
 // https://leetcode.com/problems/number-of-dice-rolls-with-target-sum/description/?envType=daily-question&envId=2023-12-26
 
+// bottom-up, dp approach:
+// Neetcode: https://www.youtube.com/watch?v=hfUxjdjVQN4
+// 14:33 "only need previos row to fill in next row"
+
+
 
 
 
