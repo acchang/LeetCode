@@ -1,9 +1,93 @@
 // https://leetcode.com/problems/number-of-dice-rolls-with-target-sum/description/?envType=daily-question&envId=2023-12-26
 
+const { AxiosHeaders } = require("axios");
+
 // bottom-up, dp approach:
 // Neetcode: https://www.youtube.com/watch?v=hfUxjdjVQN4
-// 14:33 "only need previos row to fill in next row"
+// 14:33 "only need previous row to fill in next row"
 
+// Both: https://leetcode.com/problems/number-of-dice-rolls-with-target-sum/solutions/773197/javascript-solution-top-down-with-memoization-and-bottom-up-approach-dp/?envType=daily-question&envId=2023-12-26
+
+// Monu DP -- 68/84
+// a little slower than memoization
+
+function numRollsToTarget(n, k, target) {
+    const MOD = Math.pow(10,9) + 7
+    let dp = new Array(n+1);
+
+    for (let i=0; i<n+1; i++){
+        dp[i] = new Array(target+1).fill(0);
+    }
+
+    dp[0][0] = 1
+
+    for (let i=1; i<=n; i++){
+        //for the number of dice
+        for (let j=1; j<=target; j++){
+            // for totals up to the target
+            for (let f=1; f<=k; f++){
+                // for each face of the die
+                if (j-f < 0){break}
+                // if face is larger than number up to target, negative, so break
+                dp[i][j]=(dp[i][j] + dp[i-1][j-f])%MOD;
+                // set as dp[dice][total] the current plus one row up and before.
+                // and the current keeps getting replaced as f goes through the face
+            }
+        }
+    }
+    return dp[n][target]
+  };
+
+
+// for dice = 1, face = 6, target = 3
+//     0  1  2  3
+//   [ 1, 0, 0, 0 ]
+//   [ 0, 1, 1, 1 ] 
+
+//   dp[i][j]=(dp[i][j] + dp[i-1][j-f])%MOD;
+//   dp[1][1]= 0+ rowbefore(target-current OR 3-1... 2 = 0) add rowbefore 3-2=1=0, eventually get 1
+//   you're looking at the combinations of the current die that add to the previous that make the target, but the target is the column head.
+
+
+// for dice = 2, face = 6, target = 7
+
+//   0  1  2  3  4  5  6  7
+// [ 1, 0, 0, 0, 0, 0, 0, 0],
+// [ 0, 1, 1, 1, 1, 1, 1, 0], -- one die makes 1 to 6
+// [ 0, 0, 1, 2, 3, 4, 5, 6] -- second die, combinations that make columnheads
+
+// I think I understand but may not be able to replicate.
+// the dp aspect is hard as one builds on the other
+
+
+
+// Monu memoized with dp
+// a lot faster, 75%/84%
+
+function numRollsToTarget(n, k, target) {
+    MOD = 10**9 + 7
+    let dp = new Array(n+1);
+
+    for (let i=0; i<n+1; i++){
+        dp[i] = new Array(target+1).fill(-1);
+    }
+    
+      function helper(n, t){
+          if (t==0){return n === 0}
+          if (n<=0 || t<0){return 0}
+        //   if (n == 0) {
+        //     return t == 0 ?  1 : 0}
+          if (dp[n][t] != -1){return dp[n][t]}
+        
+          let count = 0
+          for (let i = 1; i<=k; i++){
+              count = (count + helper(n-1, t-i)) % MOD
+          }
+        dp[n][t] = count
+        return count
+      }
+      return helper(n, target)
+  };
 
 
 
@@ -63,18 +147,7 @@ function numRollsToTarget(n, k, target) {
       return helper(n, target)
   };
 
-
-
-
-
-
-
-
-
 // Many stepped solution https://leetcode.com/problems/number-of-dice-rolls-with-target-sum/solutions/4274303/javascript-1155-number-of-dice-rolls-with-target-sum/?envType=daily-question&envId=2023-12-26
-
-
-
 
 
 // Monu: https://www.youtube.com/watch?v=sqgpQP4_tTY
@@ -92,9 +165,11 @@ var numRollsToTarget = function (n, k, target) {
     const MOD = 10 ** 9 + 7;
     // establish modulo
     let memo = Array.from({ length: n + 1 }, () => new Array());
-  // make an array from lemgth specified and each one a new array
+  // make an array from length specified and each one a new array
   // see array.fom MDN entry
   
+// it keeps adjusting the die and the target until it's hit and records a count
+
     function numofways(n, target) {
       if (memo[n][target] !== undefined) return memo[n][target];
       if (n === 0 && target === 0) return 1;
@@ -110,9 +185,6 @@ var numRollsToTarget = function (n, k, target) {
     
     return numofways(n, target);
   };
-
-
-
 
 
 // essentially we need to calculate all possibilities using a recursive function, when total equals target and n becomes zero with no nice left.
@@ -131,13 +203,6 @@ var numRollsToTarget = function(n, k, target) {
     }
     return helper(n,target)
 };
-
-
-
-
-
-
-
 
 
 
