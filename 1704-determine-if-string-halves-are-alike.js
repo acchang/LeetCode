@@ -1,3 +1,25 @@
+// New attempt 1/11/24
+// https://leetcode.com/problems/determine-if-string-halves-are-alike/description/?envType=daily-question&envId=2024-01-12
+
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+var halvesAreAlike = function(s) {
+    let count = 0
+    let vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']
+    for (let i=0; i<s.length/2; i++){
+        if (vowels.includes(s[i])){count++}
+    }
+    for (let i=s.length-1; i>s.length/2-1; i--){
+        if (vowels.includes(s[i])){count--}
+    }
+    return count == 0
+};
+
+
+
+//-------
 var halvesAreAlike = function(s) {
     let a = s.slice(0,Math.floor(s.length/2))
     let b = s.slice(Math.floor(s.length/2))
