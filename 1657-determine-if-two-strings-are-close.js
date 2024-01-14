@@ -7,7 +7,50 @@ condition2 : we need freq of char in strings to be same, irrespective of the ord
 If above 2 conditions are satisfied then just swapping will get us the word2 from word1
 */
 
+/**
+ * @param {string} word1
+ * @param {string} word2
+ * @return {boolean}
+ */
+var closeStrings = function(word1, word2) {
 
+    let alpha = "abcdefghijklmnopqrstuvwxyz";
+    for (let k=0; k<alpha.length; k++){
+        if (word1.includes(alpha[k]) != word2.includes(alpha[k])){
+            return false
+        }
+    }
+
+    const word1Map = new Map();
+    const word2Map = new Map();
+
+    for (let i=0; i<word1.length; i++){
+        if (word1Map.has(word1[i])){
+            word1Map.set(word1[i], word1Map.get(word1[i])+1)}
+        else {word1Map.set(word1[i], 1)}
+    }
+
+    for (let j=0; j<word2.length; j++){
+        if (word2Map.has(word2[j])){
+            word2Map.set(word2[j], word2Map.get(word2[j])+1)}
+        else {word2Map.set(word2[j], 1)}
+    }
+
+    let word1Values = Array.from(word1Map.values()).sort()
+    let word2Values = Array.from(word2Map.values()).sort()
+
+    for(let l=0; l<word1Values.length; l++){
+        if (word1Values[l] != word2Values[l]){return false}
+    }
+
+    return true
+};
+
+
+
+
+
+// ---------
 var closeStrings = function(word1, word2) {
     let word1Uniques = [... new Set(word1)].sort();
     let word2Uniques = [... new Set(word2)].sort();
