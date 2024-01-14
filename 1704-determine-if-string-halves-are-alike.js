@@ -18,28 +18,6 @@ var halvesAreAlike = function(s) {
 };
 
 
-// also:
-
-// https://leetcode.com/problems/minimum-number-of-steps-to-make-two-strings-anagram/solutions/4555349/9653easy-solutionwith-explanation/
-
-var minSteps = function(s, t) {
-    const countS = new Array(26).fill(0);
-    const countT = new Array(26).fill(0);
-
-    for (let i = 0; i < s.length; i++) {
-        countS[s.charCodeAt(i) - 'a'.charCodeAt(0)]++;
-    // subtract 'a' bc want the response to fit into array of 26
-        countT[t.charCodeAt(i) - 'a'.charCodeAt(0)]++;
-    }
-
-    let steps = 0;
-    for (let i = 0; i < 26; i++) {
-        steps += Math.abs(countS[i] - countT[i]);
-    }
-
-    return Math.floor(steps / 2);  
-};
-
 
 
 //-------
