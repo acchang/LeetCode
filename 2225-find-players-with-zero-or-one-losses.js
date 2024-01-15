@@ -25,9 +25,14 @@ var findWinners = function(matches) {
         else {lossesMap.set(matches[i][1], 1)}
     }
    
-    console.log(lossesMap)
-
     let undefeated = []
     let oneLoss = []
+
+    for (let [key, value] of lossesMap.entries()) {
+          if (value === 0){undefeated.push(key)}
+          else if (value == 1){oneLoss.push(key)}
+         }
+
+    return [undefeated,oneLoss]
 
 };
