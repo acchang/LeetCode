@@ -6,13 +6,6 @@
  */
 
 var findWinners = function(matches) {
-    // of winners, who did not show in losers
-    // who showed in losers once
-    // O(n) 
-    // hashmap, count losses
-    // winner is zero, loser is 1
-    // anyone with a zero is in one group
-    // anyone with a 1 is in the other
     const lossesMap = new Map();
 
     for (let i=0; i<matches.length; i++){
@@ -33,6 +26,6 @@ var findWinners = function(matches) {
           else if (value == 1){oneLoss.push(key)}
          }
 
-    return [undefeated,oneLoss]
+    return [undefeated.sort((a,b)=>(a-b)),oneLoss.sort((a,b)=>(a-b))]
 
 };
