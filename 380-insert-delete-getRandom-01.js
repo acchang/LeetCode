@@ -5,6 +5,7 @@
 
 // we use classes: Classes are a template for creating objects. They encapsulate data with code to work on that data. Classes in JS are built on prototypes but also have some syntax and semantics that are unique to classes.
 
+// some help fom: https://www.youtube.com/watch?v=QxfZPSFvDCY
 
 var RandomizedSet = function() {
     this.map = new Map()
@@ -42,5 +43,5 @@ RandomizedSet.prototype.remove = function(val) {
  * @return {number}
  */
 RandomizedSet.prototype.getRandom = function() {
-    
+    return this.array[Math.floor(Math.random() * this.array.length)]
 };
