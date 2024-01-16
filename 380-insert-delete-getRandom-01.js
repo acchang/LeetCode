@@ -5,6 +5,7 @@
 
 // we use classes: Classes are a template for creating objects. They encapsulate data with code to work on that data. Classes in JS are built on prototypes but also have some syntax and semantics that are unique to classes.
 
+
 var RandomizedSet = function() {
     this.map = new Map()
     this.array = new Array()
@@ -15,11 +16,10 @@ var RandomizedSet = function() {
  * @return {boolean}
  */
 RandomizedSet.prototype.insert = function(val) {
-    if (this.Map.has(val)){return false}
-    else {
-        this.map.set(val, this.array.length)
-        this.array.push(val)
-    }
+    if (this.map.has(val)){return false};
+    this.map.set(val, this.array.length)
+    this.array.push(val)
+    return true
 };
 
 /** 
@@ -27,7 +27,15 @@ RandomizedSet.prototype.insert = function(val) {
  * @return {boolean}
  */
 RandomizedSet.prototype.remove = function(val) {
-    
+    if (!this.map.has(val)){return false}
+    else {
+        let idx = this.map.get(val)
+        this.map.set(this.array[this.array.length-1], idx)
+        this.array[idx] = this.array[this.array.length-1]
+        this.array.pop()
+        this.map.delete(val)
+        return true
+    }
 };
 
 /**
@@ -36,11 +44,3 @@ RandomizedSet.prototype.remove = function(val) {
 RandomizedSet.prototype.getRandom = function() {
     
 };
-
-/** 
- * Your RandomizedSet object will be instantiated and called as such:
- * var obj = new RandomizedSet()
- * var param_1 = obj.insert(val)
- * var param_2 = obj.remove(val)
- * var param_3 = obj.getRandom()
- */
