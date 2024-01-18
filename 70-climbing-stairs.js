@@ -1,3 +1,13 @@
+// 24 Jan 17
+
+// Fibonacci sequence is a sequence in which each number is the sum of the two preceding ones
+// https://www.youtube.com/watch?v=Y0lT9Fck7qI
+
+
+
+
+
+/////////////////
 /**
  * @param {number} n
  * @return {number}
