@@ -6,31 +6,26 @@
  * @return {number}
  */
 var minFallingPathSum = function(matrix) {
-    // let dp = new Array(matrix[0].length)    
-    // for (let m=0;m<matrix[0].length;m++){
-    //     dp[m]=matrix[matrix.length-2][m]
-    // }
-
+/**
+ * @param {number[][]} matrix
+ * @return {number}
+ */
+var minFallingPathSum = function(matrix) {
     for (let i=matrix.length-2; i>-1;i--){
         for (let j=0; j<matrix[i].length; j++){
             let candidates = []
             for (let k=-1; k<2; k++){
-                if (matrix[i+1][j+k]){
+                if (matrix[i+1][j+k] != undefined){
                     candidates.push(matrix[i+1][j+k])}
             }
             matrix[i][j] = matrix[i][j] + (Math.min(...candidates))
         }
-        console.log(matrix)
     }
-
     return Math.min(...matrix[0])
 };
 
 
-
-
-
-/////////////////////// old attemptr
+/////////////////////// old attempt
 
 /**
  * @param {number[][]} matrix
