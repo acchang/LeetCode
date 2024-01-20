@@ -10,5 +10,5 @@ var sumSubarrayMins = function(arr) {
                 res = res + Math.min(...section);
             }
         }
-    return res
+    return res % (Math.pow(10,9) + 7)
 };
