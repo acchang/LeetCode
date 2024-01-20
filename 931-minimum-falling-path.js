@@ -24,6 +24,34 @@ var minFallingPathSum = function(matrix) {
     return Math.min(...matrix[0])
 };
 
+// my solution similar to Monu DP iterative, hers is also 36%
+// https://leetcode.com/problems/minimum-falling-path-sum/submissions/1150264216/?source=submission-ac
+// she just doesn't overwrite the matrix
+
+var minFallingPathSum = function(matrix) {
+    let n = matrix.length;
+
+    let dp = new Array(n);
+    for (let i = 0; i < n; i++) {
+        dp[i] = [...matrix[i]]
+    }
+
+    let minSum = Infinity;
+    for (let i = n - 2; i >= 0; i--) {
+        minSum = Infinity;
+        for (let j = 0; j < n; j++) {
+            dp[i][j] += dp[i+1][j];
+            if (j > 0) dp[i][j] = Math.min(dp[i][j], matrix[i][j] + dp[i+1][j-1]);
+            if (j < n-1) dp[i][j] = Math.min(dp[i][j], matrix[i][j] + dp[i+1][j+1]);
+            minSum = Math.min(minSum, dp[i][j])
+        }
+    }
+    return matrix.length > 1 ? minSum : matrix[0][0];
+};
+
+
+
+
 
 /////////////////////// old attempt
 
