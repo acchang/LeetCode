@@ -1,7 +1,6 @@
-/**
- * @param {number[]} arr
- * @return {number}
- */
+// https://leetcode.com/problems/sum-of-subarray-minimums/submissions/1151165986/?envType=daily-question&envId=2024-01-20
+// https://www.youtube.com/watch?v=dS3siRzXAbc
+
 /**
  * @param {number[]} arr
  * @return {number}
@@ -31,7 +30,7 @@ var sumSubarrayMins = function(arr) {
         let currentMin = arr[i]
         res += currentMin
         for (let j=i+1; j<arr.length; j++){
-            currentMin = Math.min(currentMin, arr[j])
+            if (currentMin > arr[j]){currentMin = arr[j]}
             res += currentMin
             }
         }
