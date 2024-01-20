@@ -1,6 +1,60 @@
 // https://leetcode.com/problems/sum-of-subarray-minimums/submissions/1151165986/?envType=daily-question&envId=2024-01-20
 // https://www.youtube.com/watch?v=dS3siRzXAbc
 
+// iterate, for each number, how many numbers on the left, right is bigger (counting urself)
+// https://www.youtube.com/watch?v=vjxBVzVB-mE
+// 3,1,2,4
+// (3 * 1 * 1) + (1*2*3) + (2 * 1 * 2) + (4 * 1 * 1)
+// (3, itself) + (1 has 1 greater L, 2 greater R) + (2 has 0, 1) + (4, itself)
+// to determine how many numbers smaller than current, use a stack
+
+// https://leetcode.com/problems/sum-of-subarray-minimums/?envType=daily-question&envId=2024-01-20
+// https://leetcode.com/problems/sum-of-subarray-minimums/solutions/4597289/beats-100-c-java-java-script-explained-monotonic-stack
+
+// 1/20 DQ -- Figured out how it works, can't say I can solve on my own.
+
+/**
+ * @param {number[]} arr
+ * @return {number}
+ */
+var sumSubarrayMins = function (arr) {
+    const stack = [];
+    let result = 0;
+    for (let i = 0; i <= arr.length; i++) {
+      while (stack.length && (i === arr.length || 
+      arr[stack[stack.length - 1]] >= arr[i])) {
+        const mid = stack.pop();
+    // move along index of arr
+    // pop when arr[stack latest] (top of stack) > arr[i]
+    /* 3124
+    i=0, stack is 0
+    i=1, arr[i] is 1 and 3 > 1, so pop, stack is now []
+    left is -1 bc nothing in stack, right = 1, 1 is added to stack [1]
+    result is 3 bc
+    i=2, arr[2] is 2 and 1 < 2, no pop, stack is [1,2]
+    i=3, stack is [1,2,3]
+    i=4, pop the 3, stack is [1,2]
+    i=4 and there's still stuff in stack so stack is [1]
+    i=4, stack is [], stop
+    */
+        const left = stack.length ? stack[stack.length - 1] : -1;
+        const right = i;
+// get the result by digits to left and right of index
+        const count = ((mid - left) * (right - mid));
+        console.log(mid, "minus", left, "times", right, "minus", mid)
+        result += (count * arr[mid]);
+        console.log(left, right, mid, result)
+      }
+      stack.push(i);
+      console.log(stack)
+    }
+    return result % (1e9 + 7);
+};
+
+
+
+
+
 /**
  * @param {number[]} arr
  * @return {number}
@@ -67,16 +121,6 @@ and from left, valid substrings are 31
 
     return sum;
 };
-
-
-// iterate, for each number, how many numbers on the left, right is bigger (counting urself)
-// https://www.youtube.com/watch?v=vjxBVzVB-mE
-// 3,1,2,4
-// (3 * 1 * 1) + (1*2*3) + (2 * 1 * 2) + (4 * 1 * 1)
-// (3, itself) + (1 has 1 greater L, 2 greater R) + (2 has 0, 1) + (4, itself)
-// to determine how many numbers smaller than current, use a stack
-
-
 
 
 /**
