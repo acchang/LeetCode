@@ -22,13 +22,7 @@ var rob = function(nums) {
 // basically, do you hit nums[i] and every other before as dp tallied up?
 // or i-1 and every other before?
 
-
-
-
-
-
-
-// previous: 
+// previous: 12/14/22 at 15%
 /**
  * @param {number[]} nums
  * @return {number}
