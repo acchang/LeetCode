@@ -1,7 +1,32 @@
+// https://leetcode.com/problems/house-robber/description/?envType=daily-question&envId=2024-01-21
+// https://www.youtube.com/watch?v=Q_nBUVnfcD8
+// DQ 1/20/24
+
+
 /**
  * @param {number[]} nums
  * @return {number}
  */
+var rob = function(nums) {
+    let dp = Array(nums.length).fill(0);
+    dp[0] = nums[0];
+    dp[1] = nums[1]
+    for (let i=2; i<dp.length; i++){
+        dp[i] = Math.max(nums[i]+dp[i-2], dp[i-1])
+    }
+    return dp[dp.length-1]
+};
+
+// basically, do you hit nums[i] and every other before as dp tallied up?
+// or i-1 and every other before?
+
+
+
+
+
+
+
+// previous: 
 /**
  * @param {number[]} nums
  * @return {number}
