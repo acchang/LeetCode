@@ -1,6 +1,7 @@
 // https://leetcode.com/problems/pseudo-palindromic-paths-in-a-binary-tree/solutions/2573133/javascript-solution/?envType=daily-question&envId=2024-01-24
 // https://leetcode.com/problems/pseudo-palindromic-paths-in-a-binary-tree/editorial/?envType=daily-question&envId=2024-01-24
 // worked through the code but did not solve.
+// another explanation: https://leetcode.com/problems/pseudo-palindromic-paths-in-a-binary-tree/solutions/4619137/very-beginner-friendly-step-by-step-and-diagram-recursion-and-map-based-solution-cpp-easy/?envType=daily-question&envId=2024-01-24
 
 
 /**
