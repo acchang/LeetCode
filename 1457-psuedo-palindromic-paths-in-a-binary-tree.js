@@ -1,5 +1,7 @@
 // https://leetcode.com/problems/pseudo-palindromic-paths-in-a-binary-tree/solutions/2573133/javascript-solution/?envType=daily-question&envId=2024-01-24
 // https://leetcode.com/problems/pseudo-palindromic-paths-in-a-binary-tree/editorial/?envType=daily-question&envId=2024-01-24
+// worked through the code but did not solve.
+
 
 /**
  * Definition for a binary tree node.
