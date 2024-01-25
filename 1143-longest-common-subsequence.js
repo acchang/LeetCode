@@ -3,6 +3,99 @@
 // https://leetcode.com/problems/longest-common-subsequence/solutions/598743/javascript-solution/?envType=daily-question&envId=2024-01-25
 
 
+/**
+ * @param {string} text1
+ * @param {string} text2
+ * @return {number}
+ */
+var longestCommonSubsequence = function(text1, text2) {
+    if (text1.length > text2.length){
+        long = text1
+        short = text2
+    } else (long=text2, short=text1)
+    let dp = Array(text2.length).fill("")
+    console.log(text1, text2, dp)
+/* use pointers? go through the shortest word with each letter of longer word
+first match raises count, then break
+move to second letter of longer word from everything after first match*/
+
+
+// while (shortStart < short.length && longStart < long.length){
+    let counter = 0
+    let longest = 0
+    let j=0
+    let stopPoint
+
+    for (let i=0; i<long.length; i++){
+        console.log("i", i, long[i], j)
+        if (counter==0){j=0}
+        while (j<short.length){
+            console.log("compare long", i, long[i], "short", j, short[j])
+            if (short[j]==long[i]){counter++;
+                                console.log("counter", counter)
+                                stopPoint = j
+                                j++
+                                break}
+            j++
+            if (j==short.length){console.log("brk"); j=stopPoint; break}
+            if (counter > longest)(longest=counter)
+        }
+    }
+    return counter
+};
+
+/*  this passes initial test but fails on 18/47
+
+text1 =
+"oxcpqrsvwf"
+text2 =
+"shmtulqrypy"
+
+if you start with s, there is only one match from text2 after svwf
+but then you don't know if "hm" from "shmtulqrypy" matches before the "s" in "oxcpqrsvwf"
+so you have to run a search starting with every letter in "shmtulqrypy" to see if any combos match "oxcpqrsvwf", which would be huge.
+In this case there's a "qr" near the end of "shmtulqrypy" that matches with "oxcpqrsvwf"
+So I could implement some sort of while loop for the longer word but it would be inefficient.
+*/
+
+// The below passes 20/47 but it's getting too complicated, abandon this line of pursuit
+
+/**
+ * @param {string} text1
+ * @param {string} text2
+ * @return {number}
+ */
+var longestCommonSubsequence = function(text1, text2) {
+    if (text1.length > text2.length){
+        long = text1
+        short = text2
+    } else (long=text2, short=text1)
+
+    let counter = 0
+    let longest = 0
+    let j=0
+    let stopPoint
+
+for (let k=0; k<long.length; k++){
+    if (counter > longest)(longest=counter)
+    startLong = k 
+    counter = 0
+    for (let i=startLong; i<long.length; i++){
+        if (counter==0){j=0}
+        while (j<short.length){
+            if (short[j]==long[i]){counter++;
+                                stopPoint = j
+                                j++
+                                break}
+            j++
+            if (j==short.length){j=stopPoint; break}
+        }
+    }
+}
+    return longest
+};
+
+
 
 
 
