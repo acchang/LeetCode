@@ -2,7 +2,59 @@
 // https://leetcode.com/problems/longest-common-subsequence/description/?envType=daily-question&envId=2024-01-25
 // https://leetcode.com/problems/longest-common-subsequence/solutions/598743/javascript-solution/?envType=daily-question&envId=2024-01-25
 
+// https://www.youtube.com/watch?v=Ua0GhsJSlWM
 
+/**
+ * @param {string} text1
+ * @param {string} text2
+ * @return {number}
+ */
+var longestCommonSubsequence = function(text1, text2) {
+    const matrix = Array(text1.length + 1).fill().map(() => Array(text2.length + 1).fill(0));
+    for (let i=matrix.length-2; i>-1;i--){
+        for (let j=matrix[0].length-2; j>-1; j--){
+            if (text1[i] == text2[j]){
+                matrix[i][j] = (matrix[i+1][j+1])+1
+                }
+            else {matrix[i][j] = Math.max((matrix[i+1][j]), (matrix[i][j+1]))}
+        }
+    }
+    return matrix[0][0] 
+};
+
+// easy with the formula. 
+// build matrix, start from lower right corner. If match, add diagonally to the right.
+// if not match, take the greater of the one right or the one below.
+// answer is at upper left
+
+/*
+[   a. c  e
+a  [ M, 2, 2, 0 ],
+b  [ 2, 2, 2, 0 ],
+c  [ 2, M, 1, 0 ],
+d  [ 1, 1, 1, 0 ],
+e  [ 1, 1, M, 0 ],
+  [ 0, 0, 0, 0 ]
+]
+
+for every element in the column, matching to row
+when there is a match, you add it to the one before
+
+you take the bigger one to the left or below because that signifies at that point, which ever gets more matches between same column or same row
+
+you take diagonal when matched because that assumes parity (ex: a and a match and this assumes the number at ce and bcde is the correct matches for that subproblem)
+
+*/
+
+
+
+
+
+
+
+
+
+// below is a failed (0)n^3 solution
 /**
  * @param {string} text1
  * @param {string} text2
