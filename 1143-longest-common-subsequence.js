@@ -33,7 +33,7 @@ move to second letter of longer word from everything after first match*/
             console.log("compare long", i, long[i], "short", j, short[j])
             if (short[j]==long[i]){counter++;
                                 console.log("counter", counter)
-                                stopPoint = j
+                                stopPoint = j+1
                                 j++
                                 break}
             j++
@@ -58,7 +58,8 @@ In this case there's a "qr" near the end of "shmtulqrypy" that matches with "oxc
 So I could implement some sort of while loop for the longer word but it would be inefficient.
 */
 
-// The below passes 20/47 but it's getting too complicated, abandon this line of pursuit
+// The below passes 20/47 but it's getting too complicated with three loops
+// abandon this line of pursuit
 // "abcba" and "abcbcba" yields ans 6 but should be 5
 // it can work, I just need to get the coordination right
 // 22 / 47 outputs 3 but it should be 2. I'm just 1 off.
@@ -89,17 +90,25 @@ for (let k=0; k<long.length; k++){
         while (j<short.length){
             if (short[j]==long[i]){counter++;
                                 stopPoint = j
+// marks where if you reach the end of one letter matching, restart from here
                                 j++
                                 break}
             j++
             if (j==short.length){j=stopPoint; break}
+// if at the end of the larget word, restart at the stopPoint
         }
     }
 }
     return longest
 };
 
-
+// above fails on text1 = "ylqpejqbalahwr", text2 = "yrkzavgdmdgtqpg"
+// resets at y and r
+// it outputs 2 but it should be 3
+// bc yqp works
+// but it would have to know not to match for the r at the second index from "yrkzavgdmdgtqpg"
+// right now it just matches "yr" and if that's it, it starts again at "k"
+// it would require many more permutations.
 
 
 
