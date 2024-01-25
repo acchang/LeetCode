@@ -1,3 +1,14 @@
+// Jan 24 2024 daily question
+// https://leetcode.com/problems/longest-common-subsequence/description/?envType=daily-question&envId=2024-01-25
+// https://leetcode.com/problems/longest-common-subsequence/solutions/598743/javascript-solution/?envType=daily-question&envId=2024-01-25
+
+
+
+
+
+
+//////////// old solution
+
 /**
  * @param {string} text1
  * @param {string} text2
