@@ -62,6 +62,7 @@ So I could implement some sort of while loop for the longer word but it would be
 // "abcba" and "abcbcba" yields ans 6 but should be 5
 // it can work, I just need to get the coordination right
 // 22 / 47 outputs 3 but it should be 2. I'm just 1 off.
+// I'm confusing myself and this is not the right way anyway... do DP or recursive.
 
 /**
  * @param {string} text1
