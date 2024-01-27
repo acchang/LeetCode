@@ -20,3 +20,10 @@ var buildArray = function(nums) {
     }
     return results
 };
+
+
+// also:
+
+var buildArray = function(nums) {
+    return nums.map(x => nums[x])
+};
