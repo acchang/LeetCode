@@ -10,3 +10,20 @@ var findWordsContaining = function(words, x) {
     };
     return ans
 };
+
+// also:
+
+/**
+ * @param {string[]} words
+ * @param {character} x
+ * @return {number[]}
+ */
+var findWordsContaining = function(words, x) {
+    let ans = []
+    words.map((word, index) => {
+        if (word.includes(x)) {
+            ans.push(index)
+        }
+    })
+    return ans
+};
