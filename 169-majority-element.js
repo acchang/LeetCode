@@ -32,10 +32,23 @@ var majorityElement = function(nums) {
     return candidate
 };
 
+// sorting, beats only 32%
+// https://leetcode.com/problems/majority-element/solutions/3676530/3-method-s-beats-100-c-java-python-beginner-friendly/?envType=daily-question&envId=2024-02-12
+
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var majorityElement = function(nums) {
+    nums.sort((a,b) => a-b)
+    return nums[Math.floor(nums.length/2)]
+};
 
 
 
-//////////////
+
+////////////// previously:
 /**
  * @param {number[]} nums
  * @return {number}
