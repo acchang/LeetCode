@@ -16,6 +16,22 @@ var majorityElement = function(nums) {
     }
 };
 
+// also: Moore's Voting Algorithm gets 66%
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var majorityElement = function(nums) {
+    let count = 0, candidate = 12
+    for (num of nums){
+        if (count === 0){candidate = num, count++}
+        else if (candidate === num){count++}
+        else if (candidate != num){count--}
+    }
+    return candidate
+};
+
 
 
 
