@@ -4,6 +4,12 @@
  * @param {number} ladders
  * @return {number}
  */
+
+
+/// this fails on something like when the gaps are like this:
+// 4 1 1 1 1 9999
+// ladder first. I need to learn heaps to solve.
+
 var furthestBuilding = function(heights, bricks, ladders) {
     for (let i=0; i<heights.length; i++){
         console.log("i",i)
