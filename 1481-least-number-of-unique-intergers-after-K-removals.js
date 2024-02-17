@@ -60,18 +60,25 @@ var findLeastNumOfUniqueInts = function(arr, k) {
     return freqMap.size;
 };
 
-// previous attempt:
+// previous attempt, refined:
 
 var findLeastNumOfUniqueInts = function(arr, k) {
     let freqMap = {}
     for (ele of arr){
         if (freqMap[ele]){freqMap[ele]++} else {freqMap[ele]=1}
     }
-    console.log(freqMap)
 
-    const sortedFreq = Array.from(freqMap.values()).sort((a, b) => a[1] - b[1]);
+    const sortedFreq = Object.entries(freqMap).sort((a, b) => a[1] - b[1])
 
-console.log(sortedFreq)
+    for (let [num, freq] of sortedFreq) {
+        if (k >= freq) {
+            k -= freq;
+            delete freqMap[num];
+// need to use bracket when deleting from freqMap bc the keys are not static, they're dynamic and accept expressions
+// https://www.freecodecamp.org/news/dot-notation-vs-square-brackets-javascript/
+        } else {
+            break;
+        }
+    }
+    return Object.keys(freqMap).length;
 };
-
-
