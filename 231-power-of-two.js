@@ -1,3 +1,15 @@
+// https://leetcode.com/problems/power-of-two/description/?envType=daily-question&envId=2024-02-19
+// 2/18/24 Daily Q
+
+var isPowerOfTwo = function(n) {
+    let power = 0;
+    while (2**power <= n){power++}
+    return 2**(power-1) == n
+ };
+
+
+// old solution:
+
 /**
  * @param {number} n
  * @return {boolean}
