@@ -1,3 +1,22 @@
+// https://leetcode.com/problems/find-the-town-judge/description/?envType=daily-question&envId=2024-02-22
+// DQ 2/21/24
+
+/**
+ * @param {number} n
+ * @param {number[][]} trust
+ * @return {number}
+ */
+var findJudge = function(n, trust) {
+    let trusted=trust[0][1]
+    const allTrustedSame = (currentValue) => currentValue[1] == trusted;
+    if (trust.every(allTrustedSame) && !trust[trusted]){return trusted}
+    else return -1
+    };
+
+
+
+// OLD attempt:
+
 // https://leetcode.com/problems/find-the-town-judge/
 // tried this easy to practice graphs.
 

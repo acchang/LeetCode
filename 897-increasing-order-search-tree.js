@@ -28,7 +28,7 @@ function inorderTraversal(node) {
     // Recurse on the left subtree.
     inorderTraversal(node.left);
     // During the inorder traversal, we reassign the rights of the 'previousNode' to the current 'node'
-    // and nullify the left chilΩd to adhere to increasing BST rules.
+    // and nullify the left child to adhere to increasing BST rules.
     previousNode.right = node;
     node.left = null;
     // Update 'previousNode' to the current node.
@@ -36,10 +36,8 @@ function inorderTraversal(node) {
     // Recurse on the right subtree.
     inorderTraversal(node.right);
 }
-
     // Perform the 'inorder' traversal starting from the root.
-    inorderTraversal(root);
-  
+    inorderTraversal(root); 
     // Return the right child of the dummy node, which is the real root of the increasing BST.
     return dummyNode.right;
 }
