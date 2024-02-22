@@ -1,6 +1,47 @@
 // https://leetcode.com/problems/increasing-order-search-tree/description/
-// https://algo.monster/liteproblems/897
 
+// from: https://www.youtube.com/watch?v=ims-mvNl-jo
+// 40%
+
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {TreeNode}
+ */
+var increasingBST = function(root) {
+    let head = new TreeNode('dummy')
+    let cursor = head
+
+    function inorder(node){
+        if (!node){return}
+        
+        inorder(node.left)
+        cursor.right = new TreeNode(node.val)
+        // cursor is head and head is null, set cursor.right with the value of the leftmost
+        cursor = cursor.right
+        // move the pointer to cursor,right (which is right of head)
+        // then look at what's to the right of node
+        inorder(node.right)
+        // and the recursion starts going back up
+    }
+
+    inorder(root)
+    return head.right
+    }
+
+
+
+
+
+
+// https://algo.monster/liteproblems/897
 // using java model:
 
 /**
