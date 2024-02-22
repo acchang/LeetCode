@@ -12,6 +12,32 @@ var findJudge = function(n, trust) {
     if (trust.every(allTrustedSame) && !trust[trusted]){return trusted}
     else return -1
     };
+// doesn't work bc [[1,3],[1,4],[2,3],[2,4],[4,3]]
+
+
+/**
+ * @param {number} n
+ * @param {number[][]} trust
+ * @return {number}
+ */
+var findJudge = function(n, trust) {
+    if (n==1){return 1}
+    let hashMap = new Map()
+    for (ratings of trust){
+        if (hashMap.get(ratings[1])){hashMap.set(ratings[1], hashMap.get(ratings[1])+1)}
+        else hashMap.set(ratings[1], 1)
+        if (hashMap.get(ratings[0])){hashMap.set(ratings[0], hashMap.get(ratings[0])-1)}
+        else hashMap.set(ratings[0], -1)
+    }
+    for (let i=1; i<n+1; i++){
+        if (hashMap.get(i) == n-1){return i}
+        }
+    return -1
+};
+
+// the above works
+// https://www.youtube.com/watch?v=2AdzmA1IC1k
+// passed 54%
 
 
 
