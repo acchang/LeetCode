@@ -1,3 +1,7 @@
+// https://algo.monster/liteproblems/2331
+// https://leetcode.com/problems/evaluate-boolean-binary-tree/
+
+
 /**
  * Definition for a binary tree node.
  * function TreeNode(val, left, right) {
@@ -11,22 +15,13 @@
  * @return {boolean}
  */
 var evaluateTree = function(root) {
-    let stack =[]
-
     function dfs(node){
-        if (!node){return}
-        console.log("node", node)
-        // console.log("val", node.val, node.left, node.right)
-    if (!node.left && !node.right){stack.push(node.val == 1 ? true : false)}
-    // if (stack.length == 2){
-    //     if (node.val == 2 OR){node.val == stack[0] || stack[1] }
-    //     if (node.val == 3 AND){node.val == }
-    // }
-    dfs(node.left)
-    dfs(node.right)
+    if (!node){return}
+    if (!node.left && !node.right){return node.val}
+    else {
+        return node.val == 2 ? dfs(node.left)  || dfs(node.right) : 
+        dfs(node.left) && dfs(node.right)
+        }
     }
-
-    dfs(root)
-    console.log("s", stack)
-    return stack
+    return dfs(root)
 };
