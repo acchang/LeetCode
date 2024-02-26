@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/n-ary-tree-preorder-traversal/
+
 /**
  * // Definition for a Node.
  * function Node(val, children) {
@@ -16,7 +18,6 @@ var preorder = function(root) {
      const arr = [];
      
      while(queue.length){
-         console.log("queue:", queue, "arr:", arr)
          const node = queue.shift();
          arr.push(node.val);
          queue.unshift(...node.children);
