@@ -14,11 +14,10 @@
  */
 var invertTree = function(root) {
     if (!root){return root}
-    invertTree(root.left)
-    invertTree(root.right)
     let curr = root.left
     root.left = root.right
     root.right = curr
-    console.log(root, root.right, root.left)
+    invertTree(root.left)
+    invertTree(root.right)
     return root
 };
