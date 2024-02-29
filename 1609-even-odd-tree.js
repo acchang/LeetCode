@@ -10,31 +10,17 @@
  * @param {TreeNode} root
  * @return {boolean}
  */
-
-
-/**
- * Definition for a binary tree node.
- * function TreeNode(val, left, right) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.left = (left===undefined ? null : left)
- *     this.right = (right===undefined ? null : right)
- * }
- */
-/**
- * @param {TreeNode} root
- * @return {boolean}
- */
 var isEvenOddTree = function(root) {
     const prev = []
-    let problem = true
+    let noViolations = true
     dfs(root, 0)
-    return problem == false ? false : true
+    return noViolations == false ? false : true
     
     function dfs (node, depth){
         if (!node){return}
-        if ((node.val + depth)%2==0){problem = false}
-        if (depth%2 == 0 && (prev[depth] >= node.val)){problem = false}
-        if (depth%2 != 0 && (prev[depth] <= node.val)){problem = false}
+        if ((node.val + depth)%2==0){noViolations = false}
+        if (depth%2 == 0 && (prev[depth] >= node.val)){noViolations = false}
+        if (depth%2 != 0 && (prev[depth] <= node.val)){noViolations = false}
         prev[depth] = node.val
         dfs(node.left, depth+1)
         dfs(node.right, depth+1)
