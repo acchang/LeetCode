@@ -20,6 +20,36 @@ var minimumLength = function(s) {
         return end - begin +1
 };
 
+// also tail recursion
+
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var minimumLength = function(s) {
+    return deleteSimilarEnds(s, 0, s.length - 1);
+}
+
+function deleteSimilarEnds(s, begin, end) {
+    // The ends differ or meet in the middle
+    if (begin >= end || s[begin] != s[end]) {
+        return end - begin + 1;
+    } else {
+        let c = s[begin];
+
+        while (begin <= end && s[begin] == c) {
+            begin++;
+        }
+
+        // Delete consecutive occurrences of c from suffix
+        while (end > begin && s[end] == c) {
+            end--;
+        }
+
+        return deleteSimilarEnds(s, begin, end);
+    }
+}
+
 
 
 
