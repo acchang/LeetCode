@@ -1,6 +1,28 @@
 // https://leetcode.com/problems/intersection-of-two-arrays/description/?envType=daily-question&envId=2024-03-10
 // 3/9/24 DQ
 
+// using hashmap, 65%
+
+/**
+ * @param {number[]} nums1
+ * @param {number[]} nums2
+ * @return {number[]}
+ */
+var intersection = function(nums1, nums2) {
+    let seen = {}
+    let res = []
+    for (num of nums1){seen[num] = 1}
+    for (num of nums2){
+        if (seen[num]== 1){
+            res.push(num);
+            seen[num] = 0
+            }
+    }
+    return res
+};
+
+
+
 // using sort and pointers, 19%
 
 /**
