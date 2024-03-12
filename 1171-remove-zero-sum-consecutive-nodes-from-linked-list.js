@@ -1,3 +1,6 @@
+// https://leetcode.com/problems/remove-zero-sum-consecutive-nodes-from-linked-list/?envType=daily-question&envId=2024-03-12
+// Daily Q 3/12/24
+
 /**
  * Definition for singly-linked list.
  * function ListNode(val, next) {
