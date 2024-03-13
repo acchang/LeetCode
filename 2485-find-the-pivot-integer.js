@@ -2,12 +2,18 @@
  * @param {number} n
  * @return {number}
  */
+/**
+ * @param {number} n
+ * @return {number}
+ */
 var pivotInteger = function(n) {
-    let right = n-1
-    let left = 1
     let rightTotal = n
     let leftTotal = 0
+    let right = n
+    let left = 0
     while (right >= left){
+        if (leftTotal == rightTotal && right == left){return left}
+        if (leftTotal == rightTotal){return ++left}
         if (rightTotal > leftTotal){
             left++
             leftTotal +=left
@@ -16,7 +22,6 @@ var pivotInteger = function(n) {
             right--
             rightTotal +=right
         }
-        if (leftTotal = rightTotal){return left++}
     }
     return -1
 };
